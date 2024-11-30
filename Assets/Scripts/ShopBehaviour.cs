@@ -59,7 +59,7 @@ public class ShopBehaviour : MonoBehaviour
     
     void RotateTower(float scrollDelta)
     {
-        float rotationAngle = scrollDelta > 0 ? 90 : -90; // Drehe um 90 Grad je nach Scrollrichtung
+        float rotationAngle = scrollDelta > 0 ? -90 : 90; // Drehe um 90 Grad je nach Scrollrichtung
         currentTower.transform.Rotate(0, 0, rotationAngle);
 
         // Aktualisiere die Schussrichtung
