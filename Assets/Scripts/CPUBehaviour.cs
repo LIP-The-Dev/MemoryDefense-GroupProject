@@ -8,26 +8,23 @@ public class CPUBehaviour : TowerBehaviour
     [SerializeField] private int numberOfProjectiles;
     private float nextAttackTime;
 
-    [SerializeField] private float attackOffset = 1f;
+    [SerializeField] private float AttackSpeed = 1f;
+    [SerializeField] private int AttackDamage = 1;
 
-    public static  int Cost = -200;
+    [SerializeField] private int Cost = -200;
+    [SerializeField] private int UpgradeCost = -350;
 
     [SerializeField] private Vector3 direction;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        Shoot();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextAttackTime)
-        {
-            Shoot();
-            nextAttackTime = Time.time + attackOffset; 
-        }
     }
 
     /*public override void Upgrade()
@@ -48,6 +45,7 @@ public class CPUBehaviour : TowerBehaviour
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.down);
             proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.left);
+            Invoke("Shoot", AttackSpeed);
         }
         
     }
@@ -65,6 +63,28 @@ public class CPUBehaviour : TowerBehaviour
         if (other.gameObject.CompareTag("CPUProjectile"))
         {
             Destroy(other.gameObject);
+        }
+    }
+    
+    protected override void setUpgrade()
+    {
+        switch (UpgradeIndex)
+        {
+            case 1:
+            {
+                setAttackSpeed(0.5f);
+                break;
+            }
+            case 2:
+            {
+                setAttackDamage(2);
+                break;
+            }
+            case 3:
+            {
+                finalUpgrade();
+                break;
+            }
         }
     }
 }
