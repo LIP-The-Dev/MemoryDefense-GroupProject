@@ -17,12 +17,13 @@ public class NetzteilBehaviour : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         VirenBehaviour viren = other.gameObject.GetComponent<VirenBehaviour>();
         if (viren)
         {
             GameManagerBehaviour.GetInstance().gotHit(viren.getDamage());
+            Destroy(other.gameObject);
         }
     }
 }
