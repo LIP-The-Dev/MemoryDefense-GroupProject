@@ -32,12 +32,12 @@ public abstract class TowerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CurrentSprite = BaseSprite;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CurrentSprite = BaseSprite;
     }
     
 
@@ -114,16 +114,7 @@ public abstract class TowerBehaviour : MonoBehaviour
     {
         return UpgradeIndex;
     }
-
-    protected void OnMouseDown()
-    {
-        if (IsSet)
-        {
-            GameManagerBehaviour.GetInstance().getShop().GetComponent<ShopBehaviour>().setTower(gameObject);
-            GameManagerBehaviour.GetInstance().getShop().GetComponent<ShopBehaviour>().showUpgrade();
-        }
-    }
-
+    
     public void setFix()
     {
         IsSet = true;
