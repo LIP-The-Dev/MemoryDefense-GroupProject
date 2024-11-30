@@ -25,12 +25,13 @@ public class ProjectileBehaviour : MonoBehaviour
     // Update is called once per frame
     
 
-    public void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Virus"))
         {
             other.gameObject.GetComponent<VirenBehaviour>().looseLife(damage);
         }
+        Destroy(gameObject);
     }
     void Update()
     {

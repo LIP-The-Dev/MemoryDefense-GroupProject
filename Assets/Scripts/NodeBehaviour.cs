@@ -6,8 +6,8 @@ public class NodeBehaviour : TowerBehaviour
 {
     [SerializeField] private Vector3 ShootingDirection;
     [SerializeField] private float AttackCooldown = 5f;
-    [SerializeField] private int Cost = -100;
-    [SerializeField] private int UpgradeCost = -200;
+     private int Cost = -100;
+     private int UpgradeCost = -200;
     [SerializeField] private int AttackDamage = 1;
     [SerializeField] private int UpgradeAttackCooldown = 10;
     // Start is called before the first frame update

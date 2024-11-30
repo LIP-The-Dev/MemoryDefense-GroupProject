@@ -622,67 +622,6 @@ RectTransform:
   m_AnchoredPosition: {x: -108.65076, y: -178.70406}
   m_SizeDelta: {x: 164.02124, y: 154.4082}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1513255431
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2202383050620840331, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: UpgradeAttackSpeed
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270599952715348994, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7752325730746102075, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
-      propertyPath: m_Name
-      value: Node
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cbb9e168d81bf20429cfb22f8eb54aac, type: 3}
 --- !u!1 &1613553449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Netzteil: {fileID: 0}
-  Shop: {fileID: 157774235}
+  Shop: {fileID: 0}
   Pfad: {fileID: 1896694098}
   VirenSpawner: {fileID: 1804500060}
   TimeText: {fileID: 1959940912}
@@ -1718,4 +1657,3 @@ SceneRoots:
   - {fileID: 1896694100}
   - {fileID: 1613979914}
   - {fileID: 113282423}
-  - {fileID: 1513255431}

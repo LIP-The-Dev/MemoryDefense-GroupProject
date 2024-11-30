@@ -19,7 +19,8 @@ public class VirenSpawnBehaviour : MonoBehaviour
     }
     public void spawn()
     {
-        Instantiate(VirenPrefab, transform.position, Quaternion.identity);
+        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z+1);
+        Instantiate(VirenPrefab, spawnPos, Quaternion.identity);
         Invoke("spawn", spawnSpeed);
     }
 }
