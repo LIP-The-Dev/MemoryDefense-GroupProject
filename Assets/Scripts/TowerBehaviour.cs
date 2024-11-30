@@ -19,15 +19,9 @@ public abstract class TowerBehaviour : MonoBehaviour
     
     [SerializeField] protected int UpgradeCost;
     
-    [SerializeField] protected Canvas UpgradeCanvas;
-
-    [SerializeField] protected Button ButtonPrefab;
+    protected GameObject UpgradeCanvas;
     
-    [SerializeField] protected Canvas MainCanvas;
-    
-    [SerializeField] protected Canvas ShopCanvas;
-    
-    protected Button SelectTowerButton;
+    [SerializeField]protected GameObject ShopCanvas;
 
     protected int UpgradeIndex = 0;
     
@@ -37,10 +31,13 @@ public abstract class TowerBehaviour : MonoBehaviour
     [SerializeField] protected Sprite UpgradeFinalSprite;
 
     protected Sprite CurrentSprite;
+
+    protected bool IsSet = false;
     // Start is called before the first frame update
     void Start()
     {
-        UpgradeCanvas.enabled = false;
+        UpgradeCanvas = GameManagerBehaviour.GetInstance().getUpgradeCanvas().gameObject;
+        ShopCanvas = GameManagerBehaviour.GetInstance().getShop().gameObject;
     }
 
     // Update is called once per frame
@@ -119,22 +116,24 @@ public abstract class TowerBehaviour : MonoBehaviour
         return Cost;
     }
 
-    public virtual void setFix()
-    {
-        if(!SelectTowerButton) SelectTowerButton = Instantiate(ButtonPrefab, transform.position, Quaternion.identity);
-        SelectTowerButton.transform.SetParent(MainCanvas.transform);
-        SelectTowerButton.onClick.AddListener(ButtonPressed);
-    }
-
-    protected virtual void ButtonPressed()
-    {
-        UpgradeCanvas.enabled = true;
-        UpgradeCanvas.GetComponent<UpgradeCanvasBehaviour>().setTower(gameObject);
-        ShopCanvas.enabled = false;
-    }
-
     public int getUpgradeIndex()
     {
         return UpgradeIndex;
     }
+
+    protected void OnMouseDown()
+    {
+        if (IsSet)
+        {
+            UpgradeCanvas.GetComponent<UpgradeCanvasBehaviour>().EnableButtons();
+            UpgradeCanvas.GetComponent<UpgradeCanvasBehaviour>().setTower(gameObject);
+            ShopCanvas.GetComponent<ShopBehaviour>().DisableButtons();
+        }
+    }
+
+    public void setFix()
+    {
+        IsSet = true;
+    }
+    
 }

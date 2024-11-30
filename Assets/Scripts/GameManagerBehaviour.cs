@@ -13,11 +13,13 @@ public class GameManagerBehaviour : MonoBehaviour
     private int Level;
     private int Score;
     [SerializeField] private GameObject Netzteil;
-    [SerializeField] private GameObject Shop;
+    [SerializeField] private Canvas Shop;
     [SerializeField] private GameObject Pfad;
+    [SerializeField] private Canvas Upgrade;
     [SerializeField] private GameObject VirenSpawner;
     [SerializeField] private TMP_Text TimeText;
     [SerializeField] private TMP_Text StatsText;
+    [SerializeField] private Canvas Main;
     private static GameManagerBehaviour Instance;
     // Start is called before the first frame update    
 
@@ -86,5 +88,20 @@ public class GameManagerBehaviour : MonoBehaviour
         String hours = ((int)TimeInGame / 3600).ToString("D2");
         if(hours.Equals("24")) hours = "0";
         TimeText.text = "Time: \n" + hours + ":" + min + ":" + sec;
+    }
+
+    public Canvas getShop()
+    {
+        return Shop;
+    }
+
+    public Canvas getUpgradeCanvas()
+    {
+        return Upgrade;
+    }
+
+    public Canvas getMain()
+    {
+        return Main;
     }
 }

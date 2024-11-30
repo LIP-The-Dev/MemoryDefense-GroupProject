@@ -74,6 +74,7 @@ public class ShopBehaviour : MonoBehaviour
     {
         isPlacingTower = false;
         SnapToGrid();
+        currentTower.GetComponent<TowerBehaviour>().setFix();
         currentTower = null;
     }
 
@@ -115,6 +116,47 @@ public class ShopBehaviour : MonoBehaviour
             mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
             currentTower = Instantiate(NodePrefab, mousePosition, Quaternion.identity);
             isPlacingTower = true;
+        }
+    }
+
+    public void DisableButtons()
+    {
+        foreach (Transform child in transform)
+        {
+            Button button = child.GetComponent<Button>();
+            if (button != null)
+            {
+                // Unsichtbar machen
+                Image buttonImage = button.GetComponent<Image>();
+                if (buttonImage != null)
+                {
+                    buttonImage.color = new Color(0, 0, 0, 0); // Vollständig transparent
+                }
+
+                // Interaktivität deaktivieren
+                button.interactable = false;
+            }
+        }
+    }
+
+    // Aktiviert alle Buttons (sichtbar und interagierbar)
+    public void EnableButtons()
+    {
+        foreach (Transform child in transform)
+        {
+            Button button = child.GetComponent<Button>();
+            if (button != null)
+            {
+                // Sichtbar machen
+                Image buttonImage = button.GetComponent<Image>();
+                if (buttonImage != null)
+                {
+                    buttonImage.color = new Color(1, 1, 1, 1); // Standardfarbe (weiß)
+                }
+
+                // Interaktivität aktivieren
+                button.interactable = true;
+            }
         }
     }
 }
