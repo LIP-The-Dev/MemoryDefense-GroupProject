@@ -6,10 +6,9 @@ using UnityEngine;
 public class CPUBehaviour : TowerBehaviour
 {
     [SerializeField] private int numberOfProjectiles;
-    private float nextAttackTime;
 
-    [SerializeField] private float AttackSpeed = 1f;
-    [SerializeField] private int AttackDamage = 1;
+    [SerializeField] private float AttackCooldown;
+    [SerializeField] private int AttackDamage;
 
     [SerializeField] private int Cost = -200;
     [SerializeField] private int UpgradeCost = -350;
@@ -25,6 +24,7 @@ public class CPUBehaviour : TowerBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 
     /*public override void Upgrade()
@@ -34,8 +34,6 @@ public class CPUBehaviour : TowerBehaviour
 
     public override void Shoot()
     {
-        for (int i = 0; i < numberOfProjectiles; i++)
-        {   
             Vector3 projSpawn = new Vector3(transform.position.x,transform.position.y,transform.position.z+1);
             GameObject proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.up);
@@ -45,8 +43,7 @@ public class CPUBehaviour : TowerBehaviour
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.down);
             proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.left);
-            Invoke("Shoot", AttackSpeed);
-        }
+            Invoke("Shoot", AttackCooldown);
         
     }
 

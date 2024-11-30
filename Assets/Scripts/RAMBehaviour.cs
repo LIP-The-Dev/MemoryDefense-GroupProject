@@ -6,7 +6,7 @@ public class RAMBehaviour : TowerBehaviour
 {
     [SerializeField] private int Cost;
     [SerializeField] private int UpgradeCost;
-    [SerializeField] private float AttackSpeed = 5f;
+    [SerializeField] private float AttackCooldown = 5f;
     [SerializeField] private int AttackDamage = 2;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class RAMBehaviour : TowerBehaviour
     public override void Shoot()
     {
         GameManagerBehaviour.GetInstance().updateCurrency(AttackDamage);
-        Invoke("Shoot", AttackSpeed);
+        Invoke("Shoot", AttackCooldown);
     }
     
     public override void Sell()
