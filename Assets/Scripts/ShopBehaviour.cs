@@ -75,13 +75,8 @@ public class ShopBehaviour : MonoBehaviour
     void PlaceTower()
     {
         Vector3 position = currentTower.transform.position;
-<<<<<<< Updated upstream
-        int x =  int.Parse(Math.Floor(position.x).ToString("F0"));
-        int y =  int.Parse(Math.Floor(position.y).ToString("F0"));
-=======
->>>>>>> Stashed changes
         GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
-        if (currentTower.CompareTag("Node"))
+        if (currentTower.tag == "Node")
         {
             int x = (int) Math.Floor(position.x);
             int y = (int) Math.Floor(position.y);
@@ -96,9 +91,9 @@ public class ShopBehaviour : MonoBehaviour
                 currentTower = null;
             }
         }
-        else if (currentTower.CompareTag("CPU"))
+        else
         {
-            if (gameManager.isFree(x,y)&&gameManager.isFree(x+1,y)&&gameManager.isFree(x+1,y+1)&&gameManager.isFree(x,y+1))
+            if (currentTower.tag == "CPU")
             {
                 int x = (int) Math.Round(position.x);
                 int y = (int) Math.Round(position.y);
@@ -138,25 +133,11 @@ public class ShopBehaviour : MonoBehaviour
                     }
 
                 }
-                isPlacingTower = false;
-                SnapToGridCPU();
-                currentTower.GetComponent<TowerBehaviour>().enabled = true;
-                currentTower.GetComponent<TowerBehaviour>().setFix();
-                currentTower = null;
+
             }
         }
-        else if (currentTower.CompareTag("RAM"))
-        {
-            if (gameManager.isFree(x, y) && gameManager.isFree(x-1, y) && gameManager.isFree(x + 1, y))
-            {
-                isPlacingTower = false;
-                currentTower.GetComponent<TowerBehaviour>().enabled = true;
-                currentTower.GetComponent<TowerBehaviour>().setFix();
-                currentTower = null;
-            }
-
-        }
-
+        
+        
     }
 
     void SnapToGrid(int x, int y)
