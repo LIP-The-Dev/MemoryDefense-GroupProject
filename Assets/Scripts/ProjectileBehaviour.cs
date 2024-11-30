@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ProjectileBehaviour : MonoBehaviour
+public class ProjectileBehaviour : MonoBehaviour
 {
-    public static float Speed;
+    [SerializeField] private float Speed = 1f;
+    private Vector3 ShootingDirection = Vector3.up;
 
     [SerializeField] protected float ExplosionRange;
     
@@ -16,18 +17,19 @@ public abstract class ProjectileBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
-    public static float getSpeed()
-    {
-        return Speed;
-    }
+    
 
     public void OnCollisionEnter(Collision other)
     {
         //TODO
+    }
+    void Update()
+    {
+        transform.Translate( Vector3.up * (Speed * Time.deltaTime));
+    }
+
+    public void setShootingDirection(Vector3 dir)
+    {
+        ShootingDirection = dir;
     }
 }

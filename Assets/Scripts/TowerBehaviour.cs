@@ -12,7 +12,7 @@ public abstract class TowerBehaviour : MonoBehaviour
 
     [SerializeField] protected float MaxRange;
 
-    [SerializeField] protected float Cost;
+    [SerializeField] protected int Cost;
     
     [SerializeField] protected double Percent = 0.45;
     // Start is called before the first frame update
