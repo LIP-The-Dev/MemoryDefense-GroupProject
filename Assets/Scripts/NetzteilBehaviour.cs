@@ -25,8 +25,18 @@ public class NetzteilBehaviour : MonoBehaviour
         if (viren)
         {
             GameManagerBehaviour.GetInstance().gotHit(viren.getDamage());
-            GetComponent<VideoPlayer>().Play();
+            StartCoroutine(hurtAnimation());
+
+
             Destroy(other.gameObject);
         }
+    }
+
+    private IEnumerator hurtAnimation()
+    {
+        GetComponent<SpriteRenderer>().color= Color.red;
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.2f);
     }
 }
