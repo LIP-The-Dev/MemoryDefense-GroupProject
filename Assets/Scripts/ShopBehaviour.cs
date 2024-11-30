@@ -11,13 +11,14 @@ public class ShopBehaviour : MonoBehaviour
 
     [SerializeField] private Button ButtonNode;
 
-    public GameObject RAMPrefab;
+    [SerializeField] private GameObject RAMPrefab;
 
-    public GameObject CPUPrefab;
+    [SerializeField] private GameObject CPUPrefab;
 
-    public static GameObject NodePrefab;
+    [SerializeField] private GameObject NodePrefab;
 
-    [SerializeField] private GameObject currentTower;
+    private GameObject currentTower;
+    
 
     public GameObject getCurrentTower()
     {
@@ -41,28 +42,49 @@ public class ShopBehaviour : MonoBehaviour
 
     void BuyRAM()
     {
+        bool placed = false;
         if (currentTower == null)
         {
             currentTower = Instantiate(RAMPrefab);
             currentTower.AddComponent<DragAndDropBehavior>();
+            placed = true;
+        }
+
+        if (placed)
+        {
+            GameManagerBehaviour.GetInstance().updateCurrency(RAMBehaviour.Cost);
         }
     }
     
     void BuyCPU()
     {
+        bool placed = false;
         if (currentTower == null)
         {
             currentTower = Instantiate(CPUPrefab);
             currentTower.AddComponent<DragAndDropBehavior>();
+            placed = true;
+        }
+        
+        if (placed)
+        {
+            GameManagerBehaviour.GetInstance().updateCurrency(CPUBehaviour.Cost);
         }
     }
     
     void BuyNode()
     {
+        bool placed = false;
         if (currentTower == null)
         {
             currentTower = Instantiate(NodePrefab);
             currentTower.AddComponent<DragAndDropBehavior>();
+            placed = true;
+        }
+        
+        if (placed)
+        {
+            GameManagerBehaviour.GetInstance().updateCurrency(NodeBehaviour.Cost);
         }
     }
 }
