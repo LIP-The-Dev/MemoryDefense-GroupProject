@@ -10,6 +10,8 @@ public class ShopBehaviour : MonoBehaviour
     [SerializeField] private Button ButtonCPU;
 
     [SerializeField] private Button ButtonNode;
+    
+    [SerializeField] private Button ButtonUpgrade;
 
     [SerializeField] private GameObject RAMPrefab;
 
@@ -18,6 +20,8 @@ public class ShopBehaviour : MonoBehaviour
     [SerializeField] private GameObject NodePrefab;
 
     private GameObject currentTower;
+    
+    private GameObject TowerToUpgrade;
     
     private bool isPlacingTower = false;
     
@@ -74,8 +78,8 @@ public class ShopBehaviour : MonoBehaviour
     {
         isPlacingTower = false;
         SnapToGrid();
-        currentTower.GetComponent<TowerBehaviour>().setFix();
         currentTower.GetComponent<TowerBehaviour>().enabled = true;
+        currentTower.GetComponent<TowerBehaviour>().setFix();
         currentTower = null;
     }
 
@@ -122,45 +126,24 @@ public class ShopBehaviour : MonoBehaviour
             isPlacingTower = true;
         }
     }
-    
-    public void DisableButtons()
-    {
-        foreach (Transform child in transform)
-        {
-            Button button = child.GetComponent<Button>();
-            if (button != null)
-            {
-                // Unsichtbar machen
-                Image buttonImage = button.GetComponent<Image>();
-                if (buttonImage != null)
-                {
-                    buttonImage.color = new Color(0, 0, 0, 0); // Vollständig transparent
-                }
 
-                // Interaktivität deaktivieren
-                button.interactable = false;
-            }
-        }
+    public void showUpgrade()
+    {
     }
 
-    // Aktiviert alle Buttons (sichtbar und interagierbar)
-    public void EnableButtons()
+    public void hideUpgrade()
     {
-        foreach (Transform child in transform)
-        {
-            Button button = child.GetComponent<Button>();
-            if (button != null)
-            {
-                // Sichtbar machen
-                Image buttonImage = button.GetComponent<Image>();
-                if (buttonImage != null)
-                {
-                    buttonImage.color = new Color(1, 1, 1, 1); // Standardfarbe (weiß)
-                }
+        
+    }
+    
+    public void setTower(GameObject tower)
+    {
+        TowerToUpgrade = tower;
+    }
 
-                // Interaktivität aktivieren
-                button.interactable = true;
-            }
-        }
+    void ButtonPressed()
+    {
+        TowerToUpgrade.GetComponent<TowerBehaviour>().upgrade();
+        if(TowerToUpgrade.GetComponent<TowerBehaviour>().getUpgradeIndex() == 3) ButtonUpgrade.enabled = false;
     }
 }
