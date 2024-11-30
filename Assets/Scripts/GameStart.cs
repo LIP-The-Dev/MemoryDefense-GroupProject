@@ -17,7 +17,12 @@ public class GameStart : MonoBehaviour
         
     }
 
-    public void ButtonStartPressed()
+    public void ButtonTutorialPressed()
+    {
+        SceneManager.LoadScene("Tutorial Scene");
+    }
+
+    public void ButtonGamePressed()
     {
         SceneManager.LoadScene("FINALscene 1");
     }
