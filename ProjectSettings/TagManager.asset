@@ -9,6 +9,7 @@ TagManager:
   - CPU
   - RAM
   - Node
+  - Virus
   layers:
   - Default
   - TransparentFX
