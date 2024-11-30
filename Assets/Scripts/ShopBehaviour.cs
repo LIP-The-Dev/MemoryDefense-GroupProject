@@ -78,6 +78,8 @@ public class ShopBehaviour : MonoBehaviour
         GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
         if (currentTower.tag == "Node")
         {
+            int x = (int) Math.Floor(position.x);
+            int y = (int) Math.Floor(position.y);
             Debug.Log("Node");
             if (gameManager.isFree(x,y))
             {
@@ -93,6 +95,8 @@ public class ShopBehaviour : MonoBehaviour
         {
             if (currentTower.tag == "CPU")
             {
+                int x = (int) Math.Round(position.x);
+                int y = (int) Math.Round(position.y);
                 Debug.Log("CPU");
                 if (gameManager.isFree(x,y)&&gameManager.isFree(x,y-1)&&gameManager.isFree(x-1,y-1)&&gameManager.isFree(x-1,y))
                 {
@@ -112,6 +116,8 @@ public class ShopBehaviour : MonoBehaviour
             {
                 if (currentTower.tag == "RAM")
                 {
+                    int x = (int) Math.Floor(position.x);
+                    int y = (int) Math.Floor(position.y);
                     Debug.Log("RAM");
                     if (gameManager.isFree(x, y) && gameManager.isFree(x-1, y) && gameManager.isFree(x + 1, y))
                     {
