@@ -75,8 +75,8 @@ public class ShopBehaviour : MonoBehaviour
     void PlaceTower()
     {
         Vector3 position = currentTower.transform.position;
-        double x =  Math.Floor(position.x);
-        double y =  Math.Floor(position.y);
+        int x =  int.Parse(Math.Floor(position.x).ToString("F0"));
+        int y =  int.Parse(Math.Floor(position.y).ToString("F0"));
         GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
         if (currentTower.tag == "Node")
         {
