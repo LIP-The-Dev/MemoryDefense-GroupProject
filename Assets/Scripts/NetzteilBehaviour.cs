@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,5 +15,15 @@ public class NetzteilBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        VirenBehaviour viren = other.gameObject.GetComponent<VirenBehaviour>();
+        if (viren)
+        {
+            GameManagerBehaviour.GetInstance().gotHit(viren.getDamage());
+            Destroy(other.gameObject);
+        }
     }
 }

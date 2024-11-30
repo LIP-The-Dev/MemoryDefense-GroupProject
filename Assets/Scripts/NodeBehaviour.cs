@@ -6,7 +6,6 @@ public class NodeBehaviour : TowerBehaviour
 {
     [SerializeField] private Vector3 ShootingDirection;
     private float nextAttackTime;
-
     [SerializeField] private float attackOffset = 1f;
     public static int Cost = -100;
     // Start is called before the first frame update
@@ -32,7 +31,8 @@ public class NodeBehaviour : TowerBehaviour
     
     public override void Shoot()
     {
-        GameObject proj = Instantiate(ProjectilePrefab, ShootingDirection, Quaternion.identity);
+        Vector3 projSpawn = new Vector3(transform.position.x,transform.position.y,transform.position.z+1);
+        GameObject proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
         proj.GetComponent<ProjectileBehaviour>().setShootingDirection(ShootingDirection);
     }
     
