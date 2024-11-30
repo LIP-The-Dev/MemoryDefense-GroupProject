@@ -31,7 +31,9 @@ public class UpgradeBehaviour : MonoBehaviour
                     showUpgradeButton();
                 }
                 else hideUpgradeButton();
+                if(hit.collider.gameObject.CompareTag("Upgrade")) showUpgradeButton();
             }
+            else hideUpgradeButton();
         }
     }
 
