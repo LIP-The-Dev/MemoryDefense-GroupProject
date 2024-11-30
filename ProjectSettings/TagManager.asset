@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CPUProjectile
   - Virus
+  - Node
   layers:
   - Default
   - TransparentFX
