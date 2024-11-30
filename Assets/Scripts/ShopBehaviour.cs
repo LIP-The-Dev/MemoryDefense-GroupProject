@@ -74,6 +74,7 @@ public class ShopBehaviour : MonoBehaviour
     {
         isPlacingTower = false;
         SnapToGrid();
+        currentTower.GetComponent<TowerBehaviour>().enabled = true;
         currentTower = null;
     }
 
@@ -92,6 +93,7 @@ public class ShopBehaviour : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
             currentTower = Instantiate(RAMPrefab, mousePosition, Quaternion.identity);
+            currentTower.GetComponent<TowerBehaviour>().enabled = false;
             isPlacingTower = true;
         }
     }
@@ -103,6 +105,7 @@ public class ShopBehaviour : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
             currentTower = Instantiate(CPUPrefab, mousePosition, Quaternion.identity);
+            currentTower.GetComponent<TowerBehaviour>().enabled = false;
             isPlacingTower = true;
         }
     }
@@ -114,6 +117,7 @@ public class ShopBehaviour : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
             currentTower = Instantiate(NodePrefab, mousePosition, Quaternion.identity);
+            currentTower.GetComponent<TowerBehaviour>().enabled = false;
             isPlacingTower = true;
         }
     }
