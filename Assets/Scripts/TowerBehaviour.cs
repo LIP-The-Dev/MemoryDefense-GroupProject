@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public abstract class TowerBehaviour : MonoBehaviour
 {
-    [SerializeField] protected float AttackSpeed;
+    [SerializeField] protected float AttackCooldown;
 
     [SerializeField] protected int AttackDamage;
 
@@ -92,9 +92,9 @@ public abstract class TowerBehaviour : MonoBehaviour
         }
     }
 
-    protected virtual void setAttackSpeed(float value)
+    protected virtual void setAttackCooldown(float value)
     {
-        AttackSpeed = value;
+        AttackCooldown = value;
     }
     
     protected virtual void setAttackDamage(int value)

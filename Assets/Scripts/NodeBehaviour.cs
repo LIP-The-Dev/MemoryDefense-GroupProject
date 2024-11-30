@@ -47,7 +47,7 @@ public class NodeBehaviour : TowerBehaviour
         {
             case 1:
             {
-                setAttackSpeed(UpgradeAttackCooldown);
+                setAttackCooldown(UpgradeAttackCooldown);
                 break;
             }
             case 2:
