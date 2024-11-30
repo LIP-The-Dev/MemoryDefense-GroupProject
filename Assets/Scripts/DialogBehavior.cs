@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogBehavior : MonoBehaviour
@@ -25,14 +26,26 @@ public class DialogBehavior : MonoBehaviour
 
     void SwitchToNextText()
     {
-        Debug.Log("sdf");
         // Verstecke den aktuellen Text
         dialogTexts[currentTextIndex].gameObject.SetActive(false);
 
-        // Erhöhe den Index und setze ihn zurück, wenn das Ende erreicht ist
-        currentTextIndex = (currentTextIndex + 1) % dialogTexts.Length;
+        // Erhöhe den Index
+        currentTextIndex++;
 
-        // Zeige den nächsten Text
-        dialogTexts[currentTextIndex].gameObject.SetActive(true);
+        // Überprüfe, ob das Ende des Arrays erreicht ist
+        if (currentTextIndex >= dialogTexts.Length)
+        {
+            LoadNextScene();
+        }
+        else
+        {
+            // Zeige den nächsten Text
+            dialogTexts[currentTextIndex].gameObject.SetActive(true);
+        }
+    }
+
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene("FINALscene 1");
     }
 }
