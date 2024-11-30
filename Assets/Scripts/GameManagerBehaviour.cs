@@ -20,6 +20,8 @@ public class GameManagerBehaviour : MonoBehaviour
     [SerializeField] private TMP_Text StatsText;
     [SerializeField] private Canvas Main;
     private static GameManagerBehaviour Instance;
+
+    private bool[,] FelderFree;
     // Start is called before the first frame update    
 
     void Awake()
@@ -28,6 +30,8 @@ public class GameManagerBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
 
         Instance = this;
     }
@@ -39,8 +43,101 @@ public class GameManagerBehaviour : MonoBehaviour
     void Start()
     {
         updateStats();
+        FelderFree = new bool[32,18];
+        blockUi();
+        blockPath();
     }
 
+    void blockUi()
+    {
+        for (int i = 0; i < 32; i++)
+        {
+            for (int j = 0; j < 18; j++)
+            {
+                FelderFree[i, j] = true;
+            }
+        }
+        for (int i = 23; i < 32; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                FelderFree[i, j] = false;
+            }
+        }
+        for (int i = 28; i < 32; i++)
+        {
+            for (int j = 5; j < 18; j++)
+            {
+                FelderFree[i, j] = false;
+            }
+        }
+        for (int i = 22; i < 28; i++)
+        {
+            for (int j = 15; j < 18; j++)
+            {
+                FelderFree[i, j] = false;
+            }
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 12; j < 18; j++)
+            {
+                FelderFree[i, j] = false;
+            }
+        }
+    }
+
+    void blockPath()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            FelderFree[i, 10] = false;
+        }
+        for (int i = 6; i < 9; i++)
+        {
+            FelderFree[5, i] = false;
+        }
+        for (int i = 3; i < 5; i++)
+        {
+            FelderFree[i, 6] = false;
+        }
+        for (int i = 3; i < 6; i++)
+        {
+            FelderFree[3, i] = false;
+        }
+        for (int i = 4; i < 11; i++)
+        {
+            FelderFree[i, 3] = false;
+        }
+        for (int i = 4; i < 13; i++)
+        {
+            FelderFree[10, i] = false;
+        }
+        for (int i = 11; i < 18; i++)
+        {
+            FelderFree[i, 12] = false;
+        }
+        for (int i = 6; i < 12; i++)
+        {
+            FelderFree[17, i] = false;
+        }
+        for (int i = 18; i < 21; i++)
+        {
+            FelderFree[i, 6] = false;
+        }
+        for (int i = 7; i < 10; i++)
+        {
+            FelderFree[20, i] = false;
+        }
+        for (int i = 21; i < 24; i++)
+        {
+            FelderFree[i, 9] = false;
+        }
+        for (int i = 5; i < 10; i++)
+        {
+            FelderFree[24, i] = false;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -52,7 +149,7 @@ public class GameManagerBehaviour : MonoBehaviour
     {
         if (Lives >= damage) Lives -= damage;
         else Lives = 0;
-        if(Lives < 1) SceneManager.LoadScene("GameOver");
+        if(Lives < 1) SceneManager.LoadScene("Scene GameOver");
         updateStats();
     }
 
