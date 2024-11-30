@@ -36,7 +36,7 @@ public class PfadBehaviour : MonoBehaviour
         EckPoints[8] = new Vector2(20, 6);
         EckPoints[9] = new Vector2(20,9);
         EckPoints[10] = new Vector2(24, 9);
-        EckPoints[11] = new Vector2(24, 3);
+        EckPoints[11] = new Vector2(24, -1);
         
 
     }

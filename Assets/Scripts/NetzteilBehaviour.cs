@@ -19,6 +19,7 @@ public class NetzteilBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Triggered");
         VirenBehaviour viren = other.gameObject.GetComponent<VirenBehaviour>();
         if (viren)
         {
