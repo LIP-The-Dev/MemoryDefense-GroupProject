@@ -26,10 +26,10 @@ public class NodeBehaviour : TowerBehaviour
 
     }*/
 
-    public void UpdateShootingDirection(float rotationAngle)
+    public void UpdateShootingDirection()
     {
         // Normalisiere den Winkel auf den Bereich [0, 360)
-        float normalizedAngle = (transform.eulerAngles.z + rotationAngle) % 360;
+        float normalizedAngle = transform.eulerAngles.z % 360;
 
         // Bestimme die Schussrichtung basierend auf dem Winkel
         if (normalizedAngle < 0)
@@ -43,7 +43,7 @@ public class NodeBehaviour : TowerBehaviour
         }
         else if (normalizedAngle == 90)
         {
-            ShootingDirection = Vector2.right; // 90 Grad -> nach rechts
+            ShootingDirection = Vector2.left; // 90 Grad -> nach links
         }
         else if (normalizedAngle == 180)
         {
@@ -51,7 +51,7 @@ public class NodeBehaviour : TowerBehaviour
         }
         else if (normalizedAngle == 270)
         {
-            ShootingDirection = Vector2.left; // 270 Grad -> nach links
+            ShootingDirection = Vector2.right; // 270 Grad -> nach rechts
         }
         else
         {
