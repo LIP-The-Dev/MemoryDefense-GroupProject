@@ -17,7 +17,7 @@ public class NetzteilBehaviour : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         VirenBehaviour viren = other.gameObject.GetComponent<VirenBehaviour>();
         if (viren)
