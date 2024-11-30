@@ -66,7 +66,7 @@ public class ShopBehaviour : MonoBehaviour
         NodeBehaviour nodeBehaviour = currentTower.GetComponent<NodeBehaviour>();
         if (nodeBehaviour != null)
         {
-            nodeBehaviour.UpdateShootingDirection(rotationAngle);
+            nodeBehaviour.UpdateShootingDirection();
         }
     }
 
