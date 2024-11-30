@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class RAMBehaviour : TowerBehaviour
 {
-    public static int Cost = -300;
+    [SerializeField] private int Cost;
+    [SerializeField] private int UpgradeCost;
+    [SerializeField] private float AttackSpeed = 5f;
+    [SerializeField] private int AttackDamage = 2;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Shoot();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Shoot();
     }
     
     /*public override void Upgrade()
@@ -25,6 +27,7 @@ public class RAMBehaviour : TowerBehaviour
     public override void Shoot()
     {
         GameManagerBehaviour.GetInstance().updateCurrency(AttackDamage);
+        Invoke("Shoot", AttackSpeed);
     }
     
     public override void Sell()
@@ -32,5 +35,27 @@ public class RAMBehaviour : TowerBehaviour
         Destroy(gameObject);
         int newCost = (int) (-Cost * Percent);
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);
+    }
+
+    protected override void setUpgrade()
+    {
+        switch (UpgradeIndex)
+        {
+            case 1:
+            {
+                setAttackSpeed(2.5f);
+                break;
+            }
+            case 2:
+            {
+                setAttackDamage(5);
+                break;
+            }
+            case 3:
+            {
+                finalUpgrade();
+                break;
+            }
+        }
     }
 }
