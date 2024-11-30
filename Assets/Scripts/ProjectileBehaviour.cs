@@ -30,8 +30,9 @@ public class ProjectileBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Virus"))
         {
             other.gameObject.GetComponent<VirenBehaviour>().looseLife(damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        
     }
     void Update()
     {
