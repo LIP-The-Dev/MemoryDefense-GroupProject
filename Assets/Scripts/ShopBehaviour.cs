@@ -78,7 +78,7 @@ public class ShopBehaviour : MonoBehaviour
         int x =  int.Parse(Math.Floor(position.x).ToString("F0"));
         int y =  int.Parse(Math.Floor(position.y).ToString("F0"));
         GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
-        if (currentTower.tag == "Node")
+        if (currentTower.CompareTag("Node"))
         {
             if (gameManager.isFree(x,y))
             {
@@ -89,9 +89,9 @@ public class ShopBehaviour : MonoBehaviour
                 currentTower = null;
             }
         }
-        else
+        else if (currentTower.CompareTag("CPU"))
         {
-            if (currentTower.tag == "CPU")
+            if (gameManager.isFree(x,y)&&gameManager.isFree(x+1,y)&&gameManager.isFree(x+1,y+1)&&gameManager.isFree(x,y+1))
             {
                 if (gameManager.isFree(x,y)&&gameManager.isFree(x+1,y)&&gameManager.isFree(x+1,y+1)&&gameManager.isFree(x,y+1))
                 {
@@ -116,11 +116,25 @@ public class ShopBehaviour : MonoBehaviour
                     }
 
                 }
-
+                isPlacingTower = false;
+                SnapToGridCPU();
+                currentTower.GetComponent<TowerBehaviour>().enabled = true;
+                currentTower.GetComponent<TowerBehaviour>().setFix();
+                currentTower = null;
             }
         }
-        
-        
+        else if (currentTower.CompareTag("RAM"))
+        {
+            if (gameManager.isFree(x, y) && gameManager.isFree(x-1, y) && gameManager.isFree(x + 1, y))
+            {
+                isPlacingTower = false;
+                currentTower.GetComponent<TowerBehaviour>().enabled = true;
+                currentTower.GetComponent<TowerBehaviour>().setFix();
+                currentTower = null;
+            }
+
+        }
+
     }
 
     void SnapToGrid(int x, int y)

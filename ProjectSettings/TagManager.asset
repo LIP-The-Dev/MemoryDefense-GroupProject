@@ -7,8 +7,12 @@ TagManager:
   - CPUProjectile
   - Virus
   - Node
+<<<<<<< Updated upstream
   - CPU
   - RAM
+=======
+  - Tower
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
