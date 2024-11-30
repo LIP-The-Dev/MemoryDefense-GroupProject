@@ -30,6 +30,8 @@ public class UpgradeBehaviour : MonoBehaviour
                 {
                     showUpgradeButton();
                 }
+                else hideUpgradeButton();
+                if(hit.collider.gameObject.CompareTag("Upgrade")) showUpgradeButton();
             }
             else hideUpgradeButton();
         }
@@ -63,6 +65,7 @@ public class UpgradeBehaviour : MonoBehaviour
                 if (towerBehaviour.getUpgradeIndex() < 3)
                 {
                     towerBehaviour.upgrade();
+                    Debug.Log(towerBehaviour.getUpgradeIndex());
                 }
                 if (towerBehaviour.getUpgradeIndex() >= 3)
                 {
