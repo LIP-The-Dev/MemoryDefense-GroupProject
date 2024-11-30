@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   Lives: 1
-  Damage: 1
+  Damage: 10
   grantsScoreOf: 1
 --- !u!50 &4560136597711158674
 Rigidbody2D:
