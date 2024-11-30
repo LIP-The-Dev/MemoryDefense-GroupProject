@@ -7,6 +7,7 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     [SerializeField] private float Speed = 1f;
     private Vector3 ShootingDirection = Vector3.up;
+    private int damage = 1;
 
     [SerializeField] protected float ExplosionRange;
     
@@ -21,7 +22,10 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        //TODO
+        if (other.gameObject.CompareTag("Virus"))
+        {
+            other.gameObject.GetComponent<VirenBehaviour>().looseLife(damage);
+        }
     }
     void Update()
     {

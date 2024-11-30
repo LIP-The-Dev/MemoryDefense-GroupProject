@@ -6,7 +6,7 @@ public class PfadBehaviour : MonoBehaviour
 {
     private Vector2[] EckPoints;
 
-    private int anzEckPoints = 4;
+    private int anzEckPoints = 12;
     private static PfadBehaviour instance;
     // Start is called before the first frame update
     void Awake()
@@ -25,10 +25,19 @@ public class PfadBehaviour : MonoBehaviour
     void Start()
     {
         EckPoints = new Vector2[anzEckPoints];
-        EckPoints[0]= new Vector2(2, 0);
-        EckPoints[1]= new Vector2(2, 1);
-        EckPoints[2]= new Vector2(0, 1);
-        EckPoints[3] = new Vector2(0, 0);
+        EckPoints[0]= new Vector2(5, 10);
+        EckPoints[1]= new Vector2(5, 6);
+        EckPoints[2]= new Vector2(3, 6);
+        EckPoints[3] = new Vector2(3, 3);
+        EckPoints[4] = new Vector2(10, 3);
+        EckPoints[5] = new Vector2(10, 12);
+        EckPoints[6] = new Vector2(17, 12);
+        EckPoints[7] = new Vector2(17, 6);
+        EckPoints[8] = new Vector2(20, 6);
+        EckPoints[9] = new Vector2(20,9);
+        EckPoints[10] = new Vector2(24, 9);
+        EckPoints[11] = new Vector2(24, -1);
+        
 
     }
 

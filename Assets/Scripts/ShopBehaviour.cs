@@ -19,72 +19,85 @@ public class ShopBehaviour : MonoBehaviour
 
     private GameObject currentTower;
     
+    private bool isPlacingTower = false;
+    
 
-    public GameObject getCurrentTower()
-    {
-        return currentTower;
-    }
+    
     
     
     // Start is called before the first frame update
     void Start()
     { 
-        ButtonRAM.onClick.AddListener(BuyRAM);
-        ButtonCPU.onClick.AddListener(BuyCPU);
-        ButtonNode.onClick.AddListener(BuyNode);
+        ButtonRAM.onClick.AddListener(OnButtonRAMClick);
+        ButtonCPU.onClick.AddListener(OnButtonCPUClick);
+        ButtonNode.onClick.AddListener(OnButtonNodeClick);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void BuyRAM()
-    {
-        bool placed = false;
-        if (currentTower == null)
+        if (isPlacingTower)
         {
-            currentTower = Instantiate(RAMPrefab);
-            currentTower.AddComponent<DragAndDropBehavior>();
-            placed = true;
-        }
-
-        if (placed)
-        {
-            GameManagerBehaviour.GetInstance().updateCurrency(RAMBehaviour.Cost);
+            FollowMouse();
+            if (Input.GetMouseButtonDown(0)) // Linke Maustaste zum Platzieren
+            {
+                PlaceTower();
+            }
         }
     }
     
-    void BuyCPU()
+    void FollowMouse()
     {
-        bool placed = false;
-        if (currentTower == null)
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
+        currentTower.transform.position = mousePosition;
+    }
+
+    void PlaceTower()
+    {
+        isPlacingTower = false;
+        SnapToGrid();
+        currentTower = null;
+    }
+
+    void SnapToGrid()
+    {
+        Vector3 position = currentTower.transform.position;
+        position.x = Mathf.Round(position.x);
+        position.y = Mathf.Round(position.y);
+        currentTower.transform.position = position;
+    }
+    
+    void OnButtonRAMClick()
+    {
+        if (!isPlacingTower)
         {
-            currentTower = Instantiate(CPUPrefab);
-            currentTower.AddComponent<DragAndDropBehavior>();
-            placed = true;
-        }
-        
-        if (placed)
-        {
-            GameManagerBehaviour.GetInstance().updateCurrency(CPUBehaviour.Cost);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
+            currentTower = Instantiate(RAMPrefab, mousePosition, Quaternion.identity);
+            isPlacingTower = true;
         }
     }
     
-    void BuyNode()
+    void OnButtonCPUClick()
     {
-        bool placed = false;
-        if (currentTower == null)
+        if (!isPlacingTower)
         {
-            currentTower = Instantiate(NodePrefab);
-            currentTower.AddComponent<DragAndDropBehavior>();
-            placed = true;
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
+            currentTower = Instantiate(CPUPrefab, mousePosition, Quaternion.identity);
+            isPlacingTower = true;
         }
-        
-        if (placed)
+    }
+    
+    void OnButtonNodeClick()
+    {
+        if (!isPlacingTower)
         {
-            GameManagerBehaviour.GetInstance().updateCurrency(NodeBehaviour.Cost);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
+            currentTower = Instantiate(NodePrefab, mousePosition, Quaternion.identity);
+            isPlacingTower = true;
         }
     }
 }

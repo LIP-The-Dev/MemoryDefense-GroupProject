@@ -66,6 +66,12 @@ public class GameManagerBehaviour : MonoBehaviour
         else return false;
     }
 
+    public void addToScore(int value)
+    {
+        Score += value;
+        updateStats();
+    }
+
     void updateStats()
     {
         StatsText.text = "Lives: " + Lives + "\nMemory: " + Currency + "\nScore: " + Score;
