@@ -18,6 +18,7 @@ public class GameManagerBehaviour : MonoBehaviour
     [SerializeField] private GameObject VirenSpawner;
     [SerializeField] private TMP_Text TimeText;
     [SerializeField] private TMP_Text StatsText;
+    [SerializeField] private Canvas Main;
     private static GameManagerBehaviour Instance;
     // Start is called before the first frame update    
 
@@ -86,5 +87,15 @@ public class GameManagerBehaviour : MonoBehaviour
         String hours = ((int)TimeInGame / 3600).ToString("D2");
         if(hours.Equals("24")) hours = "0";
         TimeText.text = "Time: \n" + hours + ":" + min + ":" + sec;
+    }
+
+    public GameObject getShop()
+    {
+        return Shop;
+    }
+
+    public Canvas getMain()
+    {
+        return Main;
     }
 }

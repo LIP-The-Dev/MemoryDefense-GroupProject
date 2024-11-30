@@ -30,6 +30,4 @@ public class UpgradeCanvasBehaviour : MonoBehaviour
         Tower.GetComponent<TowerBehaviour>().upgrade();
         if(Tower.GetComponent<TowerBehaviour>().getUpgradeIndex() == 3) ButtonUpgrade.enabled = false;
     }
-    
-    
 }

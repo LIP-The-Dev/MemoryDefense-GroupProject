@@ -18,16 +18,6 @@ public abstract class TowerBehaviour : MonoBehaviour
     [SerializeField] protected double Percent = 0.45;
     
     [SerializeField] protected int UpgradeCost;
-    
-    [SerializeField] protected Canvas UpgradeCanvas;
-
-    [SerializeField] protected Button ButtonPrefab;
-    
-    [SerializeField] protected Canvas MainCanvas;
-    
-    [SerializeField] protected Canvas ShopCanvas;
-    
-    protected Button SelectTowerButton;
 
     protected int UpgradeIndex = 0;
     
@@ -37,10 +27,11 @@ public abstract class TowerBehaviour : MonoBehaviour
     [SerializeField] protected Sprite UpgradeFinalSprite;
 
     protected Sprite CurrentSprite;
+
+    protected bool IsSet = false;
     // Start is called before the first frame update
     void Start()
     {
-        UpgradeCanvas.enabled = false;
     }
 
     // Update is called once per frame
@@ -119,22 +110,23 @@ public abstract class TowerBehaviour : MonoBehaviour
         return Cost;
     }
 
-    public virtual void setFix()
-    {
-        if(!SelectTowerButton) SelectTowerButton = Instantiate(ButtonPrefab, transform.position, Quaternion.identity);
-        SelectTowerButton.transform.SetParent(MainCanvas.transform);
-        SelectTowerButton.onClick.AddListener(ButtonPressed);
-    }
-
-    protected virtual void ButtonPressed()
-    {
-        UpgradeCanvas.enabled = true;
-        UpgradeCanvas.GetComponent<UpgradeCanvasBehaviour>().setTower(gameObject);
-        ShopCanvas.enabled = false;
-    }
-
     public int getUpgradeIndex()
     {
         return UpgradeIndex;
     }
+
+    protected void OnMouseDown()
+    {
+        if (IsSet)
+        {
+            GameManagerBehaviour.GetInstance().getShop().GetComponent<ShopBehaviour>().setTower(gameObject);
+            GameManagerBehaviour.GetInstance().getShop().GetComponent<ShopBehaviour>().showUpgrade();
+        }
+    }
+
+    public void setFix()
+    {
+        IsSet = true;
+    }
+    
 }

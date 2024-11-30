@@ -10,6 +10,8 @@ public class ShopBehaviour : MonoBehaviour
     [SerializeField] private Button ButtonCPU;
 
     [SerializeField] private Button ButtonNode;
+    
+    [SerializeField] private Button ButtonUpgrade;
 
     [SerializeField] private GameObject RAMPrefab;
 
@@ -18,6 +20,8 @@ public class ShopBehaviour : MonoBehaviour
     [SerializeField] private GameObject NodePrefab;
 
     private GameObject currentTower;
+    
+    private GameObject TowerToUpgrade;
     
     private bool isPlacingTower = false;
     
@@ -31,6 +35,8 @@ public class ShopBehaviour : MonoBehaviour
         ButtonRAM.onClick.AddListener(OnButtonRAMClick);
         ButtonCPU.onClick.AddListener(OnButtonCPUClick);
         ButtonNode.onClick.AddListener(OnButtonNodeClick);
+        ButtonUpgrade.onClick.AddListener(OnButtonUpgradeClick);
+        hideUpgrade();
     }
 
     // Update is called once per frame
@@ -75,6 +81,7 @@ public class ShopBehaviour : MonoBehaviour
         isPlacingTower = false;
         SnapToGrid();
         currentTower.GetComponent<TowerBehaviour>().enabled = true;
+        currentTower.GetComponent<TowerBehaviour>().setFix();
         currentTower = null;
     }
 
@@ -120,5 +127,26 @@ public class ShopBehaviour : MonoBehaviour
             currentTower.GetComponent<TowerBehaviour>().enabled = false;
             isPlacingTower = true;
         }
+    }
+
+    public void showUpgrade()
+    {
+        ButtonUpgrade.transform.position = new Vector3(-108.6508f, -381f, 0f);
+    }
+
+    public void hideUpgrade()
+    {
+        ButtonUpgrade.transform.position = new Vector3(10000f, 10000f, 0f);
+    }
+    
+    public void setTower(GameObject tower)
+    {
+        TowerToUpgrade = tower;
+    }
+
+    void OnButtonUpgradeClick()
+    {
+        TowerToUpgrade.GetComponent<TowerBehaviour>().upgrade();
+        if(TowerToUpgrade.GetComponent<TowerBehaviour>().getUpgradeIndex() == 3) ButtonUpgrade.enabled = false;
     }
 }
