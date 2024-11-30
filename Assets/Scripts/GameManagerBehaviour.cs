@@ -46,10 +46,11 @@ public class GameManagerBehaviour : MonoBehaviour
         updateTime();
     }
 
-    void looseLive()
+    public void gotHit(int damage)
     {
+        if (Lives >= damage) Lives -= damage;
+        else Lives = 0;
         if(Lives < 1) SceneManager.LoadScene("GameOver");
-        else Lives--;
         updateStats();
     }
 
