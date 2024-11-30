@@ -19,6 +19,6 @@ public class GameStart : MonoBehaviour
 
     public void ButtonStartPressed()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("FINALscene 1");
     }
 }
