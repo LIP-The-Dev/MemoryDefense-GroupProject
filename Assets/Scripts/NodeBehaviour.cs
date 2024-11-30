@@ -5,11 +5,10 @@ using UnityEngine;
 public class NodeBehaviour : TowerBehaviour
 {
     [SerializeField] private Vector3 ShootingDirection;
-    [SerializeField] private float AttackCooldown = 5f;
+    [SerializeField] private float AttackCooldown = 2f;
      private int Cost = -100;
      private int UpgradeCost = -200;
     [SerializeField] private int AttackDamage = 1;
-    [SerializeField] private int UpgradeAttackCooldown = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +81,7 @@ public class NodeBehaviour : TowerBehaviour
         {
             case 1:
             {
-                setAttackCooldown(UpgradeAttackCooldown);
+                setAttackCooldown(1f);
                 break;
             }
             case 2:
