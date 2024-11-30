@@ -26,9 +26,9 @@ public class CustomCursor : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, cursorMode);
     }
 
-    /*void OnDestroy()
+    void OnDestroy()
     {
         // Setze den Cursor auf den Standardzustand zurück, wenn das GameObject zerstört wird
         Cursor.SetCursor(null, Vector2.zero, cursorMode);
-    }*/
+    }
 }
