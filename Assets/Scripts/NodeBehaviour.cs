@@ -5,11 +5,11 @@ using UnityEngine;
 public class NodeBehaviour : TowerBehaviour
 {
     [SerializeField] private Vector3 ShootingDirection;
-    private float nextAttackTime;
-    [SerializeField] private float AttackSpeed = 1f;
+    [SerializeField] private float AttackCooldown = 5f;
     [SerializeField] private int Cost = -100;
     [SerializeField] private int UpgradeCost = -200;
     [SerializeField] private int AttackDamage = 1;
+    [SerializeField] private int UpgradeAttackCooldown = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,7 @@ public class NodeBehaviour : TowerBehaviour
         Vector3 projSpawn = new Vector3(transform.position.x,transform.position.y,transform.position.z+1);
         GameObject proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
         proj.GetComponent<ProjectileBehaviour>().setShootingDirection(ShootingDirection);
-        Invoke("Shoot", AttackSpeed);
+        Invoke("Shoot", AttackCooldown);
     }
     
     public override void Sell()
@@ -47,7 +47,7 @@ public class NodeBehaviour : TowerBehaviour
         {
             case 1:
             {
-                setAttackSpeed(0.5f);
+                setAttackSpeed(UpgradeAttackCooldown);
                 break;
             }
             case 2:

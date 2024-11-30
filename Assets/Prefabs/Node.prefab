@@ -97,11 +97,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd38bab6207c644a9b5e492364b6248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeed: 1
+  AttackSpeed: 100
   AttackDamage: 1
   ProjectilePrefab: {fileID: 2810746879521564439, guid: 100777533e32a3449aa9b9b921384117, type: 3}
   MaxRange: 1
   Cost: 0
   Percent: 0.45
+  UpgradeCost: 0
+  UpgradeCanvas: {fileID: 0}
+  ButtonPrefab: {fileID: 0}
+  MainCanvas: {fileID: 0}
+  ShopCanvas: {fileID: 0}
+  BaseSprite: {fileID: 0}
+  UpgradeOneSprite: {fileID: 0}
+  UpgradeTwoSprite: {fileID: 0}
+  UpgradeFinalSprite: {fileID: 0}
   ShootingDirection: {x: 0, y: 1, z: 0}
-  attackOffset: 1
+  AttackCooldown: 5
+  Cost: 0
+  UpgradeCost: 0
+  AttackDamage: 1
+  UpgradeAttackCooldown: 10

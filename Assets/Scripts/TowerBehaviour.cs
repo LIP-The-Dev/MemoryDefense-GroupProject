@@ -28,8 +28,8 @@ public abstract class TowerBehaviour : MonoBehaviour
     [SerializeField] protected Canvas ShopCanvas;
     
     protected Button SelectTowerButton;
-    
-    protected int UpgradeIndex;
+
+    protected int UpgradeIndex = 0;
     
     [SerializeField] protected Sprite BaseSprite;
     [SerializeField] protected Sprite UpgradeOneSprite;
