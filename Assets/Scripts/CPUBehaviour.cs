@@ -53,15 +53,6 @@ public class CPUBehaviour : TowerBehaviour
         int newCost = (int) (-Cost * Percent);
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);
     }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        Debug.Log(other.gameObject.name +" is destroyed");
-        if (other.gameObject.CompareTag("CPUProjectile"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
     
     protected override void setUpgrade()
     {

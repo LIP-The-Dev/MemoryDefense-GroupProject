@@ -119,5 +119,10 @@ public abstract class TowerBehaviour : MonoBehaviour
     {
         IsSet = true;
     }
+
+    public bool getFix()
+    {
+        return IsSet;
+    }
     
 }
