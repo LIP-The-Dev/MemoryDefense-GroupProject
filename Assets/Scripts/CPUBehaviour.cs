@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,14 +38,15 @@ public class CPUBehaviour : TowerBehaviour
     public override void Shoot()
     {
         for (int i = 0; i < numberOfProjectiles; i++)
-        {
-            GameObject proj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+        {   
+            Vector3 projSpawn = new Vector3(transform.position.x,transform.position.y,transform.position.z+1);
+            GameObject proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.up);
-            proj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.right);
-            proj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.down);
-            proj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
             proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.left);
         }
         
@@ -55,5 +57,14 @@ public class CPUBehaviour : TowerBehaviour
         Destroy(gameObject);
         int newCost = (int) (-Cost * Percent);
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        Debug.Log(other.gameObject.name +" is destroyed");
+        if (other.gameObject.tag == "CPUProjectile")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
