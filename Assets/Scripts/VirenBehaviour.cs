@@ -61,4 +61,9 @@ public class VirenBehaviour : MonoBehaviour
 
         EckPointsPassed++;
     }
+
+    public int getDamage()
+    {
+        return Damage;
+    }
 }
