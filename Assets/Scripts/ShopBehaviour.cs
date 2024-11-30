@@ -75,16 +75,11 @@ public class ShopBehaviour : MonoBehaviour
     void PlaceTower()
     {
         Vector3 position = currentTower.transform.position;
-<<<<<<< Updated upstream
         int x =  int.Parse(Math.Floor(position.x).ToString("F0"));
         int y =  int.Parse(Math.Floor(position.y).ToString("F0"));
-=======
->>>>>>> Stashed changes
         GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
         if (currentTower.CompareTag("Node"))
         {
-            int x = (int) Math.Floor(position.x);
-            int y = (int) Math.Floor(position.y);
             Debug.Log("Node");
             if (gameManager.isFree(x,y))
             {
@@ -100,8 +95,6 @@ public class ShopBehaviour : MonoBehaviour
         {
             if (gameManager.isFree(x,y)&&gameManager.isFree(x+1,y)&&gameManager.isFree(x+1,y+1)&&gameManager.isFree(x,y+1))
             {
-                int x = (int) Math.Round(position.x);
-                int y = (int) Math.Round(position.y);
                 Debug.Log("CPU");
                 if (gameManager.isFree(x,y)&&gameManager.isFree(x,y-1)&&gameManager.isFree(x-1,y-1)&&gameManager.isFree(x-1,y))
                 {
@@ -121,8 +114,6 @@ public class ShopBehaviour : MonoBehaviour
             {
                 if (currentTower.tag == "RAM")
                 {
-                    int x = (int) Math.Floor(position.x);
-                    int y = (int) Math.Floor(position.y);
                     Debug.Log("RAM");
                     if (gameManager.isFree(x, y) && gameManager.isFree(x-1, y) && gameManager.isFree(x + 1, y))
                     {
