@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6647365469639042883}
   m_Layer: 0
   m_Name: RAM
-  m_TagString: Untagged
+  m_TagString: RAM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,6 @@ MonoBehaviour:
   Cost: 0
   Percent: 0.45
   UpgradeCost: 0
-  ShopCanvas: {fileID: 0}
   BaseSprite: {fileID: 0}
   UpgradeOneSprite: {fileID: 0}
   UpgradeTwoSprite: {fileID: 0}

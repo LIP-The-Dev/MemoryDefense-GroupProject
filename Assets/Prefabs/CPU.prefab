@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7991824957306468611}
   m_Layer: 0
   m_Name: CPU
-  m_TagString: Untagged
+  m_TagString: CPU
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,6 @@ MonoBehaviour:
   Cost: 0
   Percent: 0.45
   UpgradeCost: 0
-  ShopCanvas: {fileID: 0}
   BaseSprite: {fileID: 0}
   UpgradeOneSprite: {fileID: 0}
   UpgradeTwoSprite: {fileID: 0}
@@ -187,5 +186,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
