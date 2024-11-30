@@ -7,8 +7,8 @@ public class CPUBehaviour : TowerBehaviour
 {
     [SerializeField] private int numberOfProjectiles;
 
-    [SerializeField] private float AttackCooldown = 2f;
-    [SerializeField] private int AttackDamage = 1;
+    [SerializeField] private float AttackCooldown;
+    [SerializeField] private int AttackDamage;
 
     [SerializeField] private int Cost = -200;
     [SerializeField] private int UpgradeCost = -350;
@@ -69,7 +69,7 @@ public class CPUBehaviour : TowerBehaviour
         {
             case 1:
             {
-                setAttackCooldown(1);
+                setAttackCooldown(0.5f);
                 break;
             }
             case 2:

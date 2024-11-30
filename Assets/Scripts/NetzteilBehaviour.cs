@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class NetzteilBehaviour : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class NetzteilBehaviour : MonoBehaviour
         if (viren)
         {
             GameManagerBehaviour.GetInstance().gotHit(viren.getDamage());
+            GetComponent<VideoPlayer>().Play();
             Destroy(other.gameObject);
         }
     }
