@@ -59,10 +59,10 @@ public class CPUBehaviour : TowerBehaviour
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);
     }
 
-    void OnCollisionExit2D(Collision2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
         Debug.Log(other.gameObject.name +" is destroyed");
-        if (other.gameObject.tag == "CPUProjectile")
+        if (other.gameObject.CompareTag("CPUProjectile"))
         {
             Destroy(other.gameObject);
         }

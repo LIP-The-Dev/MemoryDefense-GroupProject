@@ -6,8 +6,6 @@ public class NodeBehaviour : TowerBehaviour
 {
     [SerializeField] private Vector3 ShootingDirection;
     private float nextAttackTime;
-    [SerializeField] private float maxRange=2;
-
     [SerializeField] private float attackOffset = 1f;
     public static int Cost = -100;
     // Start is called before the first frame update
