@@ -10,6 +10,11 @@ public class ProjectileBehaviour : MonoBehaviour
     private int damage = 1;
 
     [SerializeField] protected float ExplosionRange;
+
+    private float boundY = 18f;
+    private float boundNegY = -1f;
+    private float boundX = 32f;
+    private float boundNegX = -1f;
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +35,7 @@ public class ProjectileBehaviour : MonoBehaviour
     void Update()
     {
         transform.Translate( ShootingDirection * (Speed * Time.deltaTime));
+        if(transform.position.y < boundNegY || transform.position.y > boundY || transform.position.x < boundNegX || transform.position.x > boundX) Destroy(gameObject);
     }
 
     public void setShootingDirection(Vector3 dir)
