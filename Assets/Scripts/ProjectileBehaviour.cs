@@ -25,7 +25,7 @@ public class ProjectileBehaviour : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate( Vector3.up * (Speed * Time.deltaTime));
+        transform.Translate( ShootingDirection * (Speed * Time.deltaTime));
     }
 
     public void setShootingDirection(Vector3 dir)

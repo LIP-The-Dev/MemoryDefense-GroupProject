@@ -25,13 +25,8 @@ public class PfadBehaviour : MonoBehaviour
     void Start()
     {
         EckPoints = new Vector2[anzEckPoints];
-<<<<<<< Updated upstream
         EckPoints[0]= new Vector2(2, 0);
         EckPoints[1]= new Vector2(2, 1);
-=======
-        EckPoints[0]= new Vector2(28, 0);
-        EckPoints[1]= new Vector2(28, 17);
->>>>>>> Stashed changes
         EckPoints[2]= new Vector2(0, 1);
         EckPoints[3] = new Vector2(0, 0);
 

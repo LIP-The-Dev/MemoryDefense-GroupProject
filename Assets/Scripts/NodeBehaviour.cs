@@ -8,8 +8,7 @@ public class NodeBehaviour : TowerBehaviour
     private float nextAttackTime;
 
     [SerializeField] private float attackOffset = 1f;
-    
-    [SerializeField] private int Cost = -100;
+    public static int Cost = -100;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +32,8 @@ public class NodeBehaviour : TowerBehaviour
     
     public override void Shoot()
     {
-        Instantiate(ProjectilePrefab, ShootingDirection, Quaternion.identity);
-        ProjectilePrefab.transform.position += ShootingDirection * (ProjectileBehaviour.getSpeed() * Time.deltaTime);
+        GameObject proj = Instantiate(ProjectilePrefab, ShootingDirection, Quaternion.identity);
+        proj.GetComponent<ProjectileBehaviour>().setShootingDirection(ShootingDirection);
     }
     
     public override void Sell()

@@ -9,7 +9,7 @@ public class CPUBehaviour : TowerBehaviour
 
     [SerializeField] private float attackOffset = 1f;
 
-    [SerializeField] private int Cost = -200;
+    public static  int Cost = -200;
 
     [SerializeField] private Vector3 direction;
     
@@ -36,23 +36,16 @@ public class CPUBehaviour : TowerBehaviour
 
     public override void Shoot()
     {
-        float angleStep = 360f / numberOfProjectiles;
-        float angle = 0f;
-
         for (int i = 0; i < numberOfProjectiles; i++)
         {
-            float projectileDirXPosition = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180) * MaxRange;
-            float projectileDirYPosition = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180) * MaxRange;
-
-            Vector3 projectileVector = new Vector3(projectileDirXPosition, projectileDirYPosition, transform.position.z);
-            Vector3 projectileMoveDirection = (projectileVector - transform.position).normalized * AttackSpeed;
-
-            GameObject tmpObj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
-            direction = new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
-            ProjectilePrefab.transform.position += direction * (ProjectileBehaviour.getSpeed() * Time.deltaTime);
-            tmpObj.GetComponent<Rigidbody2D>().velocity = direction;
-
-            angle += angleStep;
+            GameObject proj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.up);
+            proj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.right);
+            proj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.down);
+            proj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            proj.GetComponent<ProjectileBehaviour>().setShootingDirection(Vector3.left);
         }
         
     }
