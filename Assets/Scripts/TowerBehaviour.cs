@@ -119,6 +119,7 @@ public abstract class TowerBehaviour : MonoBehaviour
     {
         if (IsSet)
         {
+            GameManagerBehaviour.GetInstance().getShop().GetComponent<ShopBehaviour>().setTower(gameObject);
             GameManagerBehaviour.GetInstance().getShop().GetComponent<ShopBehaviour>().showUpgrade();
         }
     }

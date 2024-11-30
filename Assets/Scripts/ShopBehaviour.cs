@@ -35,6 +35,8 @@ public class ShopBehaviour : MonoBehaviour
         ButtonRAM.onClick.AddListener(OnButtonRAMClick);
         ButtonCPU.onClick.AddListener(OnButtonCPUClick);
         ButtonNode.onClick.AddListener(OnButtonNodeClick);
+        ButtonUpgrade.onClick.AddListener(OnButtonUpgradeClick);
+        hideUpgrade();
     }
 
     // Update is called once per frame
@@ -129,11 +131,12 @@ public class ShopBehaviour : MonoBehaviour
 
     public void showUpgrade()
     {
+        ButtonUpgrade.transform.position = new Vector3(-108.6508f, -381f, 0f);
     }
 
     public void hideUpgrade()
     {
-        
+        ButtonUpgrade.transform.position = new Vector3(10000f, 10000f, 0f);
     }
     
     public void setTower(GameObject tower)
@@ -141,7 +144,7 @@ public class ShopBehaviour : MonoBehaviour
         TowerToUpgrade = tower;
     }
 
-    void ButtonPressed()
+    void OnButtonUpgradeClick()
     {
         TowerToUpgrade.GetComponent<TowerBehaviour>().upgrade();
         if(TowerToUpgrade.GetComponent<TowerBehaviour>().getUpgradeIndex() == 3) ButtonUpgrade.enabled = false;
