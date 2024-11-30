@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,18 +74,71 @@ public class ShopBehaviour : MonoBehaviour
 
     void PlaceTower()
     {
-        isPlacingTower = false;
-        SnapToGrid();
-        currentTower.GetComponent<TowerBehaviour>().enabled = true;
-        currentTower.GetComponent<TowerBehaviour>().setFix();
-        currentTower = null;
+        Vector3 position = currentTower.transform.position;
+        int x = (int) Math.Floor(position.x);
+        int y = (int) Math.Floor(position.y);
+        GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
+        if (currentTower.tag == "Node")
+        {
+            if (gameManager.isFree(x,y))
+            {
+                isPlacingTower = false;
+                SnapToGrid();
+                currentTower.GetComponent<TowerBehaviour>().enabled = true;
+                currentTower.GetComponent<TowerBehaviour>().setFix();
+                currentTower = null;
+            }
+        }
+        else
+        {
+            if (currentTower.tag == "CPU")
+            {
+                if (gameManager.isFree(x,y)&&gameManager.isFree(x+1,y)&&gameManager.isFree(x+1,y+1)&&gameManager.isFree(x,y+1))
+                {
+                    isPlacingTower = false;
+                    SnapToGridCPU();
+                    currentTower.GetComponent<TowerBehaviour>().enabled = true;
+                    currentTower.GetComponent<TowerBehaviour>().setFix();
+                    currentTower = null;
+                }
+            }
+            else
+            {
+                if (currentTower.tag == "RAM)
+                {
+                    if (gameManager.isFree(x, y) && gameManager.isFree(x-1, y) && gameManager.isFree(x + 1, y))
+                    {
+                        isPlacingTower = false;
+                        SnapToGrid();
+                        currentTower.GetComponent<TowerBehaviour>().enabled = true;
+                        currentTower.GetComponent<TowerBehaviour>().setFix();
+                        currentTower = null;
+                    }
+
+                }
+
+            }
+        }
+        
+        
     }
 
     void SnapToGrid()
     {
         Vector3 position = currentTower.transform.position;
-        position.x = Mathf.Round(position.x);
-        position.y = Mathf.Round(position.y);
+        int x = (int) Math.Floor(position.x);
+        int y = (int) Math.Floor(position.y);
+        position.x = x + 0.5f;
+        position.y = y + 0.5f;
+        currentTower.transform.position = position;
+    }
+    void SnapToGridCPU()
+    {
+        Vector3 position = currentTower.transform.position;
+        int x = (int) Math.Floor(position.x);
+        int y = (int) Math.Floor(position.y);
+        position.x = x + 1f;
+        position.y = y + 1f;
         currentTower.transform.position = position;
     }
     
