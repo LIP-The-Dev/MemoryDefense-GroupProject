@@ -43,6 +43,10 @@ public class ShopBehaviour : MonoBehaviour
             {
                 PlaceTower();
             }
+            if (currentTower != null && currentTower.CompareTag("Node") && Input.mouseScrollDelta.y != 0) // Mausrad zum Drehen
+            {
+                RotateTower(Input.mouseScrollDelta.y);
+            }
         }
     }
     
@@ -51,6 +55,19 @@ public class ShopBehaviour : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
         currentTower.transform.position = mousePosition;
+    }
+    
+    void RotateTower(float scrollDelta)
+    {
+        float rotationAngle = scrollDelta > 0 ? -90 : 90; // Drehe um 90 Grad je nach Scrollrichtung
+        currentTower.transform.Rotate(0, 0, rotationAngle);
+
+        // Aktualisiere die Schussrichtung
+        NodeBehaviour nodeBehaviour = currentTower.GetComponent<NodeBehaviour>();
+        if (nodeBehaviour != null)
+        {
+            nodeBehaviour.UpdateShootingDirection(rotationAngle);
+        }
     }
 
     void PlaceTower()

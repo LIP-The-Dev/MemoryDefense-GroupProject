@@ -105,9 +105,21 @@ MonoBehaviour:
   MaxRange: 1
   Cost: 0
   Percent: 0.45
+  UpgradeCost: 0
+  UpgradeCanvas: {fileID: 0}
+  ButtonPrefab: {fileID: 0}
+  MainCanvas: {fileID: 0}
+  ShopCanvas: {fileID: 0}
+  BaseSprite: {fileID: 0}
+  UpgradeOneSprite: {fileID: 0}
+  UpgradeTwoSprite: {fileID: 0}
+  UpgradeFinalSprite: {fileID: 0}
   numberOfProjectiles: 4
-  attackOffset: 1
-  direction: {x: 0, y: 0, z: 0}
+  AttackCooldown: 2
+  AttackDamage: 1
+  Cost: 0
+  UpgradeCost: -350
+  direction: {x: 0, y: 0, z: 1}
 --- !u!50 &-4534149502174851906
 Rigidbody2D:
   serializedVersion: 4

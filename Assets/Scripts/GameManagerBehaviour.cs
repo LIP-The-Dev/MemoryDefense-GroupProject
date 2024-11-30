@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerBehaviour : MonoBehaviour
 {
-    private int Lives;
+    private int Lives = 100;
     private int Currency;
     private float TimeInGame;
     private int Level;
@@ -37,6 +37,7 @@ public class GameManagerBehaviour : MonoBehaviour
     }
     void Start()
     {
+        updateStats();
     }
 
     // Update is called once per frame
@@ -66,9 +67,15 @@ public class GameManagerBehaviour : MonoBehaviour
         else return false;
     }
 
+    public void addToScore(int value)
+    {
+        Score += value;
+        updateStats();
+    }
+
     void updateStats()
     {
-        StatsText.text = "Lives: " + Lives + "\nMemory: " + Currency + "\nScore: " + Score;
+        StatsText.text = "Power: " + Lives + "%\nMemory: " + Currency + "\nScore: " + Score;
     }
 
     void updateTime()

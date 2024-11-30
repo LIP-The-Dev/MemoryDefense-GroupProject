@@ -11,6 +11,7 @@ public class VirenBehaviour : MonoBehaviour
     [SerializeField] private int Damage=1;
     private Vector2 direction = new Vector2(1, 0);
     private PfadBehaviour pfadBehaviour;
+    [SerializeField] private int grantsScoreOf = 1;
 
     private int EckPointsPassed = 0;
     // Start is called before the first frame update
@@ -22,10 +23,7 @@ public class VirenBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
             Move();
-        }
     }
 
     public void Move()
@@ -65,5 +63,15 @@ public class VirenBehaviour : MonoBehaviour
     public int getDamage()
     {
         return Damage;
+    }
+
+    public void looseLife(int damage)
+    {
+        Lives -= damage;
+        if (Lives <= 0)
+        {
+            Destroy(this.gameObject);
+            GameManagerBehaviour.GetInstance().addToScore(grantsScoreOf);
+        }
     }
 }
