@@ -19,13 +19,48 @@ public class NodeBehaviour : TowerBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 
     /*public override void Upgrade()
     {
 
     }*/
-    
+
+    public void UpdateShootingDirection(float rotationAngle)
+    {
+        // Normalisiere den Winkel auf den Bereich [0, 360)
+        float normalizedAngle = (transform.eulerAngles.z + rotationAngle) % 360;
+
+        // Bestimme die Schussrichtung basierend auf dem Winkel
+        if (normalizedAngle < 0)
+        {
+            normalizedAngle += 360;
+        }
+
+        if (normalizedAngle == 0)
+        {
+            ShootingDirection = Vector2.up; // 0 Grad -> nach oben
+        }
+        else if (normalizedAngle == 90)
+        {
+            ShootingDirection = Vector2.right; // 90 Grad -> nach rechts
+        }
+        else if (normalizedAngle == 180)
+        {
+            ShootingDirection = Vector2.down; // 180 Grad -> nach unten
+        }
+        else if (normalizedAngle == 270)
+        {
+            ShootingDirection = Vector2.left; // 270 Grad -> nach links
+        }
+        else
+        {
+            // Für den Fall, dass der Winkel nicht genau 0, 90, 180 oder 270 Grad ist
+            ShootingDirection = Quaternion.Euler(0, 0, normalizedAngle) * Vector2.up;
+        }
+    }
+
     public override void Shoot()
     {
         Vector3 projSpawn = new Vector3(transform.position.x,transform.position.y,transform.position.z+1);
