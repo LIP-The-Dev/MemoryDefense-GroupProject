@@ -75,13 +75,20 @@ public class ShopBehaviour : MonoBehaviour
     void PlaceTower()
     {
         Vector3 position = currentTower.transform.position;
+<<<<<<< Updated upstream
         int x =  int.Parse(Math.Floor(position.x).ToString("F0"));
         int y =  int.Parse(Math.Floor(position.y).ToString("F0"));
+=======
+>>>>>>> Stashed changes
         GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
         if (currentTower.CompareTag("Node"))
         {
+            int x = (int) Math.Floor(position.x);
+            int y = (int) Math.Floor(position.y);
+            Debug.Log("Node");
             if (gameManager.isFree(x,y))
             {
+                gameManager.setFree(x,y,false);
                 isPlacingTower = false;
                 SnapToGrid(x,y);
                 currentTower.GetComponent<TowerBehaviour>().enabled = true;
@@ -93,8 +100,16 @@ public class ShopBehaviour : MonoBehaviour
         {
             if (gameManager.isFree(x,y)&&gameManager.isFree(x+1,y)&&gameManager.isFree(x+1,y+1)&&gameManager.isFree(x,y+1))
             {
-                if (gameManager.isFree(x,y)&&gameManager.isFree(x+1,y)&&gameManager.isFree(x+1,y+1)&&gameManager.isFree(x,y+1))
+                int x = (int) Math.Round(position.x);
+                int y = (int) Math.Round(position.y);
+                Debug.Log("CPU");
+                if (gameManager.isFree(x,y)&&gameManager.isFree(x,y-1)&&gameManager.isFree(x-1,y-1)&&gameManager.isFree(x-1,y))
                 {
+                    gameManager.setFree(x,y,false);
+                    gameManager.setFree(x,y-1,false);
+                    gameManager.setFree(x-1,y-1,false);
+                    gameManager.setFree(x-1,y,false);
+
                     isPlacingTower = false;
                     SnapToGridCPU();
                     currentTower.GetComponent<TowerBehaviour>().enabled = true;
@@ -106,8 +121,15 @@ public class ShopBehaviour : MonoBehaviour
             {
                 if (currentTower.tag == "RAM")
                 {
+                    int x = (int) Math.Floor(position.x);
+                    int y = (int) Math.Floor(position.y);
+                    Debug.Log("RAM");
                     if (gameManager.isFree(x, y) && gameManager.isFree(x-1, y) && gameManager.isFree(x + 1, y))
                     {
+                        gameManager.setFree(x,y,false);
+                        gameManager.setFree(x-1,y,false);
+                        gameManager.setFree(x+1,y,false);
+
                         isPlacingTower = false;
                         SnapToGrid(x,y);
                         currentTower.GetComponent<TowerBehaviour>().enabled = true;
@@ -138,17 +160,20 @@ public class ShopBehaviour : MonoBehaviour
     }
 
     void SnapToGrid(int x, int y)
-    {
+    {   
+        Debug.Log(x + ", " + y);
         Vector3 position = new Vector3(x, y, 0);
-        position.x =+ 0.5f;
-        position.y =+ 0.5f;
+        position.x += 0.5f;
+        position.y += 0.5f;
         currentTower.transform.position = position;
     }
     void SnapToGridCPU()
     {
         Vector3 position = currentTower.transform.position;
-        int x = (int) Math.Floor(position.x);
-        int y = (int) Math.Floor(position.y);
+        int x = (int) Math.Round(position.x);
+        int y = (int) Math.Round(position.y);
+        position.x = x;
+        position.y = y;
         currentTower.transform.position = position;
     }
     

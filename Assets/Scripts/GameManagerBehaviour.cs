@@ -143,6 +143,11 @@ public class GameManagerBehaviour : MonoBehaviour
     {
         return FelderFree[x,y];
     }
+
+    public void setFree(int x, int y, bool wert)
+    {
+        FelderFree[x,y] = wert;
+    }
     // Update is called once per frame
     void Update()
     {
