@@ -9,7 +9,7 @@ public class NodeBehaviour : TowerBehaviour
 
     [SerializeField] private float attackOffset = 1f;
     
-    [SerializeField] private int Cost = -100;
+    [SerializeField] public static int Cost = -100;
     // Start is called before the first frame update
     void Start()
     {

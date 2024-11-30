@@ -9,7 +9,7 @@ public class CPUBehaviour : TowerBehaviour
 
     [SerializeField] private float attackOffset = 1f;
 
-    [SerializeField] private int Cost = -200;
+    [SerializeField] public static int Cost = -200;
 
     [SerializeField] private Vector3 direction;
     

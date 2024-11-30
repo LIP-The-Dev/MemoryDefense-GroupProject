@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RAMBehaviour : TowerBehaviour
 {
-    [SerializeField] private int Cost = -300;
+    public static int Cost = -300;
     // Start is called before the first frame update
     void Start()
     {
