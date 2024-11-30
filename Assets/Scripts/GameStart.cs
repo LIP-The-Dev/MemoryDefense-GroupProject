@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameStart : MonoBehaviour
 {
+    public Canvas myCanvas; 
+    public Button myButton;
     // Start is called before the first frame update
     void Start()
     {
+        myCanvas.gameObject.SetActive(false);
+        myButton.onClick.AddListener(ButtonNewCanvasPressed);
         
     }
 
@@ -17,13 +22,15 @@ public class GameStart : MonoBehaviour
         
     }
 
+    public void ToggleCanvas() { myCanvas.gameObject.SetActive(!myCanvas.gameObject.activeSelf); }
+        
     public void ButtonTutorialPressed()
     {
         SceneManager.LoadScene("Tutorial Scene");
     }
 
-    public void ButtonGamePressed()
+    public void ButtonNewCanvasPressed()
     {
-        SceneManager.LoadScene("FINALscene 1");
+        myCanvas.gameObject.SetActive(true);
     }
 }
