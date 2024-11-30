@@ -43,7 +43,7 @@ public class RAMBehaviour : TowerBehaviour
         {
             case 1:
             {
-                setAttackSpeed(2.5f);
+                setAttackCooldown(2.5f);
                 break;
             }
             case 2:

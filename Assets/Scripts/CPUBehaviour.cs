@@ -69,7 +69,7 @@ public class CPUBehaviour : TowerBehaviour
         {
             case 1:
             {
-                setAttackSpeed(0.5f);
+                setAttackCooldown(0.5f);
                 break;
             }
             case 2:
