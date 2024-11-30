@@ -13,9 +13,8 @@ public class GameManagerBehaviour : MonoBehaviour
     private int Level;
     private int Score;
     [SerializeField] private GameObject Netzteil;
-    [SerializeField] private Canvas Shop;
+    [SerializeField] private GameObject Shop;
     [SerializeField] private GameObject Pfad;
-    [SerializeField] private Canvas Upgrade;
     [SerializeField] private GameObject VirenSpawner;
     [SerializeField] private TMP_Text TimeText;
     [SerializeField] private TMP_Text StatsText;
@@ -90,14 +89,9 @@ public class GameManagerBehaviour : MonoBehaviour
         TimeText.text = "Time: \n" + hours + ":" + min + ":" + sec;
     }
 
-    public Canvas getShop()
+    public GameObject getShop()
     {
         return Shop;
-    }
-
-    public Canvas getUpgradeCanvas()
-    {
-        return Upgrade;
     }
 
     public Canvas getMain()

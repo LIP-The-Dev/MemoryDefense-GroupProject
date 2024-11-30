@@ -18,10 +18,6 @@ public abstract class TowerBehaviour : MonoBehaviour
     [SerializeField] protected double Percent = 0.45;
     
     [SerializeField] protected int UpgradeCost;
-    
-    protected GameObject UpgradeCanvas;
-    
-    [SerializeField]protected GameObject ShopCanvas;
 
     protected int UpgradeIndex = 0;
     
@@ -36,8 +32,6 @@ public abstract class TowerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpgradeCanvas = GameManagerBehaviour.GetInstance().getUpgradeCanvas().gameObject;
-        ShopCanvas = GameManagerBehaviour.GetInstance().getShop().gameObject;
     }
 
     // Update is called once per frame
@@ -125,9 +119,8 @@ public abstract class TowerBehaviour : MonoBehaviour
     {
         if (IsSet)
         {
-            UpgradeCanvas.GetComponent<UpgradeCanvasBehaviour>().EnableButtons();
-            UpgradeCanvas.GetComponent<UpgradeCanvasBehaviour>().setTower(gameObject);
-            ShopCanvas.GetComponent<ShopBehaviour>().DisableButtons();
+            GameManagerBehaviour.GetInstance().getShop().GetComponent<ShopBehaviour>().setTower(gameObject);
+            GameManagerBehaviour.GetInstance().getShop().GetComponent<ShopBehaviour>().showUpgrade();
         }
     }
 
