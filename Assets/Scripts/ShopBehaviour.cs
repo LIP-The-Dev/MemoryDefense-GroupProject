@@ -75,15 +75,15 @@ public class ShopBehaviour : MonoBehaviour
     void PlaceTower()
     {
         Vector3 position = currentTower.transform.position;
-        int x = (int) Math.Floor(position.x);
-        int y = (int) Math.Floor(position.y);
+        double x =  Math.Floor(position.x);
+        double y =  Math.Floor(position.y);
         GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
         if (currentTower.tag == "Node")
         {
             if (gameManager.isFree(x,y))
             {
                 isPlacingTower = false;
-                SnapToGrid();
+                SnapToGrid(x,y);
                 currentTower.GetComponent<TowerBehaviour>().enabled = true;
                 currentTower.GetComponent<TowerBehaviour>().setFix();
                 currentTower = null;
@@ -104,12 +104,12 @@ public class ShopBehaviour : MonoBehaviour
             }
             else
             {
-                if (currentTower.tag == "RAM)
+                if (currentTower.tag == "RAM")
                 {
                     if (gameManager.isFree(x, y) && gameManager.isFree(x-1, y) && gameManager.isFree(x + 1, y))
                     {
                         isPlacingTower = false;
-                        SnapToGrid();
+                        SnapToGrid(x,y);
                         currentTower.GetComponent<TowerBehaviour>().enabled = true;
                         currentTower.GetComponent<TowerBehaviour>().setFix();
                         currentTower = null;
@@ -123,13 +123,11 @@ public class ShopBehaviour : MonoBehaviour
         
     }
 
-    void SnapToGrid()
+    void SnapToGrid(int x, int y)
     {
-        Vector3 position = currentTower.transform.position;
-        int x = (int) Math.Floor(position.x);
-        int y = (int) Math.Floor(position.y);
-        position.x = x + 0.5f;
-        position.y = y + 0.5f;
+        Vector3 position = new Vector3(x, y, 0);
+        position.x =+ 0.5f;
+        position.y =+ 0.5f;
         currentTower.transform.position = position;
     }
     void SnapToGridCPU()
@@ -137,8 +135,6 @@ public class ShopBehaviour : MonoBehaviour
         Vector3 position = currentTower.transform.position;
         int x = (int) Math.Floor(position.x);
         int y = (int) Math.Floor(position.y);
-        position.x = x + 1f;
-        position.y = y + 1f;
         currentTower.transform.position = position;
     }
     

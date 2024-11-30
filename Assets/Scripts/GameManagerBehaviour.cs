@@ -93,7 +93,7 @@ public class GameManagerBehaviour : MonoBehaviour
         {
             FelderFree[i, 10] = false;
         }
-        for (int i = 6; i < 9; i++)
+        for (int i = 6; i < 10; i++)
         {
             FelderFree[5, i] = false;
         }
