@@ -25,18 +25,18 @@ public class PfadBehaviour : MonoBehaviour
     void Start()
     {
         EckPoints = new Vector2[anzEckPoints];
-        EckPoints[0]= new Vector2(5, 10);
-        EckPoints[1]= new Vector2(5, 6);
-        EckPoints[2]= new Vector2(3, 6);
-        EckPoints[3] = new Vector2(3, 3);
-        EckPoints[4] = new Vector2(10, 3);
-        EckPoints[5] = new Vector2(10, 12);
-        EckPoints[6] = new Vector2(17, 12);
-        EckPoints[7] = new Vector2(17, 6);
-        EckPoints[8] = new Vector2(20, 6);
-        EckPoints[9] = new Vector2(20,9);
-        EckPoints[10] = new Vector2(24, 9);
-        EckPoints[11] = new Vector2(24, -1);
+        EckPoints[0]= new Vector2(5.5f, 10.5f);
+        EckPoints[1]= new Vector2(5.5f, 6.5f);
+        EckPoints[2]= new Vector2(3.5f, 6.5f);
+        EckPoints[3] = new Vector2(3.5f, 3.5f);
+        EckPoints[4] = new Vector2(10.5f, 3.5f);
+        EckPoints[5] = new Vector2(10.5f, 12.5f);
+        EckPoints[6] = new Vector2(17.5f, 12.5f);
+        EckPoints[7] = new Vector2(17.5f, 6.5f);
+        EckPoints[8] = new Vector2(20.5f, 6.5f);
+        EckPoints[9] = new Vector2(20.5f,9.5f);
+        EckPoints[10] = new Vector2(24.5f, 9.5f);
+        EckPoints[11] = new Vector2(24.5f, -1.5f);
         
 
     }
