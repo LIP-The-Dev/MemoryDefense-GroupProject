@@ -404,7 +404,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1001 &323680364
+--- !u!1001 &379772682
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -414,11 +414,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1022311274171049986, guid: abaf97543d6181745b88c48bf65b4d7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.5
+      value: 26.5
       objectReference: {fileID: 0}
     - target: {fileID: 1022311274171049986, guid: abaf97543d6181745b88c48bf65b4d7d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.5
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1022311274171049986, guid: abaf97543d6181745b88c48bf65b4d7d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -454,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6186236586642747884, guid: abaf97543d6181745b88c48bf65b4d7d, type: 3}
       propertyPath: m_Name
-      value: FirstRAM
+      value: RAM
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2661,4 +2661,4 @@ SceneRoots:
   - {fileID: 1613979914}
   - {fileID: 113282423}
   - {fileID: 932119941}
-  - {fileID: 323680364}
+  - {fileID: 379772682}

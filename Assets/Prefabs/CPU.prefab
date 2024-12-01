@@ -104,10 +104,10 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 2810746879521564439, guid: a6675a9a5d8e00747830fc0a2d8bb1ba, type: 3}
   Percent: 0.5
   UpgradeCost: 500
-  BaseSprite: {fileID: 0}
-  UpgradeOneSprite: {fileID: 0}
-  UpgradeTwoSprite: {fileID: 0}
-  UpgradeFinalSprite: {fileID: 0}
+  BaseSprite: {fileID: 21300000, guid: a864ce7d717fea148a98ec1557a13f30, type: 3}
+  UpgradeOneSprite: {fileID: 21300000, guid: c898d0903897a3b409955e8abf30fd52, type: 3}
+  UpgradeTwoSprite: {fileID: 21300000, guid: 02536179c7564ee4ba0c86b1e7c856ab, type: 3}
+  UpgradeFinalSprite: {fileID: 21300000, guid: e7221e09cc7d6564bb9f30293fd5baf3, type: 3}
   numberOfProjectiles: 4
   direction: {x: 0, y: 0, z: 1}
 --- !u!50 &-4534149502174851906

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NodeBehaviour : TowerBehaviour
 {
-    private static int Cost = 40;
+    private static int Cost = 60;
     [SerializeField] private Vector3 ShootingDirection;
     // Start is called before the first frame update
     void Start()

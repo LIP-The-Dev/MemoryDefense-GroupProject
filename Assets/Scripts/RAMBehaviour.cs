@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RAMBehaviour : TowerBehaviour
 {
-    private static int Cost = 80;
+    private static int Cost = 120;
     // Start is called before the first frame update
     void Start()
     {
