@@ -5,19 +5,11 @@ using UnityEngine;
 
 public class RAMBehaviour : TowerBehaviour
 {
-    private static int Cost= -80;
-    private int UpgradeCost;
-    private float AttackCooldown = 5f;
-    private int AttackDamage = 20;
+    private static int Cost = 80;
     // Start is called before the first frame update
     void Start()
     {
         Shoot();
-    }
-
-    public static int getCost()
-    {
-        return Cost;
     }
 
     // Update is called once per frame
@@ -42,6 +34,11 @@ public class RAMBehaviour : TowerBehaviour
         int newCost = (int) (-Cost * Percent);
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);
     }
+    
+    public static int getCost()
+    {
+        return Cost;
+    }
 
     protected override void setUpgrade()
     {
@@ -54,7 +51,7 @@ public class RAMBehaviour : TowerBehaviour
             }
             case 2:
             {
-                setAttackDamage(5);
+                setAttackDamage(50);
                 break;
             }
             case 3:

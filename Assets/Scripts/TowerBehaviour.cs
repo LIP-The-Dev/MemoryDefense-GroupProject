@@ -10,17 +10,12 @@ public abstract class TowerBehaviour : MonoBehaviour
     [SerializeField] protected int AttackDamage;
 
     [SerializeField] protected GameObject ProjectilePrefab;
-
-    [SerializeField] protected float MaxRange;
-
-    [SerializeField] protected int Cost;
     
-    [SerializeField] protected double Percent = 0.45;
+    [SerializeField] protected double Percent;
     
     [SerializeField] protected int UpgradeCost;
 
     protected int UpgradeIndex = 0;
-    
     [SerializeField] protected Sprite BaseSprite;
     [SerializeField] protected Sprite UpgradeOneSprite;
     [SerializeField] protected Sprite UpgradeTwoSprite;
@@ -103,11 +98,6 @@ public abstract class TowerBehaviour : MonoBehaviour
 
     public virtual void Sell()
     {
-    }
-
-    public virtual int getCost()
-    {
-        return Cost;
     }
 
     public int getUpgradeIndex()

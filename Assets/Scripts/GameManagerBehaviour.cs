@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManagerBehaviour : MonoBehaviour
 {
     private int Lives = 100;
-    [SerializeField] int Currency = 100;
+    [SerializeField] private int Currency = 100;
     private float TimeInGame;
     private int Level;
     private int Score;
@@ -165,24 +165,19 @@ public class GameManagerBehaviour : MonoBehaviour
 
     public void updateCurrency(int value)
     {
-        if(Currency + value >= 0) Currency += value;
+        Currency += value;
         updateStats();
     }
 
     public bool buayble(int value)
     {
-        if (Currency + value >= 0) return true;
-        else return false;
-    }
-
-    public bool canAfford(int Cost)
-    {
-        return Currency >= Cost;
+        return Currency >= value;
     }
 
     public void subCurrency(int Cost)
     {
-        Currency -= Cost;
+        if(buayble(Cost)) Currency -= Cost;
+        updateStats();
     }
 
     public void addToScore(int value)

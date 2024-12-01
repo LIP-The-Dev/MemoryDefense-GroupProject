@@ -7,14 +7,9 @@ public class CPUBehaviour : TowerBehaviour
 {
     [SerializeField] private int numberOfProjectiles;
 
-    [SerializeField] private float AttackCooldown;
-    [SerializeField] private int AttackDamage;
-
-    private static int Cost;
-    private int UpgradeCost;
-
     [SerializeField] private Vector3 direction;
-    
+
+    private static int Cost = 350;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +60,7 @@ public class CPUBehaviour : TowerBehaviour
             }
             case 2:
             {
-                setAttackDamage(2);
+                setAttackDamage(5);
                 break;
             }
             case 3:
@@ -75,7 +70,7 @@ public class CPUBehaviour : TowerBehaviour
             }
         }
     }
-
+    
     public static int getCost()
     {
         return Cost;

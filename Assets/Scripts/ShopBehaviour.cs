@@ -22,11 +22,6 @@ public class ShopBehaviour : MonoBehaviour
     private GameObject currentTower;
     
     private bool isPlacingTower = false;
-    private GameManagerBehaviour gameManager;
-    
-
-    
-    
     
     // Start is called before the first frame update
     void Start()
@@ -35,7 +30,6 @@ public class ShopBehaviour : MonoBehaviour
         ButtonRAM.onClick.AddListener(OnButtonRAMClick);
         ButtonCPU.onClick.AddListener(OnButtonCPUClick);
         ButtonNode.onClick.AddListener(OnButtonNodeClick);
-        this.gameManager = GameManagerBehaviour.GetInstance();
     }
 
     // Update is called once per frame
@@ -78,15 +72,14 @@ public class ShopBehaviour : MonoBehaviour
     void PlaceTower()
     {
         Vector3 position = currentTower.transform.position;
-        GameManagerBehaviour gameManager = GameManagerBehaviour.GetInstance();
         if (currentTower.tag == "Node")
         {
             int x = (int) Math.Floor(position.x);
             int y = (int) Math.Floor(position.y);
             Debug.Log("Node");
-            if (gameManager.isFree(x,y))
+            if (GameManagerBehaviour.GetInstance().isFree(x,y))
             {
-                gameManager.setFree(x,y,false);
+                GameManagerBehaviour.GetInstance().setFree(x,y,false);
                 isPlacingTower = false;
                 SnapToGrid(x,y);
                 currentTower.GetComponent<TowerBehaviour>().enabled = true;
@@ -101,12 +94,12 @@ public class ShopBehaviour : MonoBehaviour
                 int x = (int) Math.Round(position.x);
                 int y = (int) Math.Round(position.y);
                 Debug.Log("CPU");
-                if (gameManager.isFree(x,y)&&gameManager.isFree(x,y-1)&&gameManager.isFree(x-1,y-1)&&gameManager.isFree(x-1,y))
+                if (GameManagerBehaviour.GetInstance().isFree(x,y)&&GameManagerBehaviour.GetInstance().isFree(x,y-1)&&GameManagerBehaviour.GetInstance().isFree(x-1,y-1)&&GameManagerBehaviour.GetInstance().isFree(x-1,y))
                 {
-                    gameManager.setFree(x,y,false);
-                    gameManager.setFree(x,y-1,false);
-                    gameManager.setFree(x-1,y-1,false);
-                    gameManager.setFree(x-1,y,false);
+                    GameManagerBehaviour.GetInstance().setFree(x,y,false);
+                    GameManagerBehaviour.GetInstance().setFree(x,y-1,false);
+                    GameManagerBehaviour.GetInstance().setFree(x-1,y-1,false);
+                    GameManagerBehaviour.GetInstance().setFree(x-1,y,false);
 
                     isPlacingTower = false;
                     SnapToGridCPU();
@@ -122,11 +115,11 @@ public class ShopBehaviour : MonoBehaviour
                     int x = (int) Math.Floor(position.x);
                     int y = (int) Math.Floor(position.y);
                     Debug.Log("RAM");
-                    if (gameManager.isFree(x, y) && gameManager.isFree(x-1, y) && gameManager.isFree(x + 1, y))
+                    if (GameManagerBehaviour.GetInstance().isFree(x, y) && GameManagerBehaviour.GetInstance().isFree(x-1, y) && GameManagerBehaviour.GetInstance().isFree(x + 1, y))
                     {
-                        gameManager.setFree(x,y,false);
-                        gameManager.setFree(x-1,y,false);
-                        gameManager.setFree(x+1,y,false);
+                        GameManagerBehaviour.GetInstance().setFree(x,y,false);
+                        GameManagerBehaviour.GetInstance().setFree(x-1,y,false);
+                        GameManagerBehaviour.GetInstance().setFree(x+1,y,false);
 
                         isPlacingTower = false;
                         SnapToGrid(x,y);
@@ -163,9 +156,9 @@ public class ShopBehaviour : MonoBehaviour
     
     void OnButtonRAMClick()
     {
-        if (gameManager.buayble(RAMBehaviour.getCost())&&!isPlacingTower)
+        if (GameManagerBehaviour.GetInstance().buayble(RAMBehaviour.getCost())&&!isPlacingTower)
         {
-                gameManager.updateCurrency(RAMBehaviour.getCost());
+            GameManagerBehaviour.GetInstance().subCurrency(RAMBehaviour.getCost());
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
                 currentTower = Instantiate(RAMPrefab, mousePosition, Quaternion.identity);
@@ -176,9 +169,9 @@ public class ShopBehaviour : MonoBehaviour
     
     void OnButtonCPUClick()
     {
-        if (gameManager.buayble(CPUBehaviour.getCost())&&!isPlacingTower)
+        if (GameManagerBehaviour.GetInstance().buayble(CPUBehaviour.getCost())&&!isPlacingTower)
         {
-            gameManager.updateCurrency(CPUBehaviour.getCost());
+            GameManagerBehaviour.GetInstance().subCurrency(CPUBehaviour.getCost());
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
             currentTower = Instantiate(CPUPrefab, mousePosition, Quaternion.identity);
@@ -189,9 +182,9 @@ public class ShopBehaviour : MonoBehaviour
     
     void OnButtonNodeClick()
     {
-        if (gameManager.buayble(NodeBehaviour.getCost())&&!isPlacingTower)
+        if (GameManagerBehaviour.GetInstance().buayble(NodeBehaviour.getCost())&&!isPlacingTower)
         {
-            gameManager.updateCurrency(NodeBehaviour.getCost());
+            GameManagerBehaviour.GetInstance().subCurrency(NodeBehaviour.getCost());
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
             currentTower = Instantiate(NodePrefab, mousePosition, Quaternion.identity);

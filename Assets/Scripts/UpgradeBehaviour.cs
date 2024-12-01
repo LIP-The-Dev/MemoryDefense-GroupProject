@@ -28,6 +28,7 @@ public class UpgradeBehaviour : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Node") || hit.collider.gameObject.CompareTag("CPU") || hit.collider.gameObject.CompareTag("RAM"))
                 {
+                    TowerToUpgrade = hit.collider.gameObject;
                     showUpgradeButton();
                 }
                 else hideUpgradeButton();

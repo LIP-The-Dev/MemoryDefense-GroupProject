@@ -102,10 +102,8 @@ MonoBehaviour:
   AttackCooldown: 2
   AttackDamage: 1
   ProjectilePrefab: {fileID: 2810746879521564439, guid: a6675a9a5d8e00747830fc0a2d8bb1ba, type: 3}
-  MaxRange: 1
-  Cost: -200
-  Percent: 0.45
-  UpgradeCost: -350
+  Percent: 0.5
+  UpgradeCost: 500
   BaseSprite: {fileID: 0}
   UpgradeOneSprite: {fileID: 0}
   UpgradeTwoSprite: {fileID: 0}

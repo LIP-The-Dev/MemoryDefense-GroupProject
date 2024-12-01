@@ -99,12 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackCooldown: 5
-  AttackDamage: 45
+  AttackDamage: 15
   ProjectilePrefab: {fileID: 0}
-  MaxRange: 0
-  Cost: -80
-  Percent: 0.45
-  UpgradeCost: -150
+  Percent: 0.5
+  UpgradeCost: 700
   BaseSprite: {fileID: 0}
   UpgradeOneSprite: {fileID: 0}
   UpgradeTwoSprite: {fileID: 0}
