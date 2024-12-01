@@ -883,9 +883,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"Du kannst sie mit dem Mausrad rotieren, um die Schussrichtung vorzugeben"
-
-'
+  m_text: "\"Du kannst sie mit dem Mausrad rotieren, um die Schussrichtung vorzugeben...
+    und untersch\xE4tze den Wert von RAM nicht\"\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -912,10 +911,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 72
   m_fontSizeBase: 100
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1087,7 +1086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"Aua. Baue Memory in mein Motherboard um die Leistung zu generieren,
+  m_text: "\"Aua... Baue Memory in mein Motherboard um die Leistung zu generieren,
     schlagkr\xE4ftige Komponenten zu platzieren, welche den Virus besiegen k\xF6nnen\"\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
