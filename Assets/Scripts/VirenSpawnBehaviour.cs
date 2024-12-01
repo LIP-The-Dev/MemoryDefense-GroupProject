@@ -8,6 +8,7 @@ using UnityEngine;
 public class VirenSpawnBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject VirenPrefab;
+    [SerializeField] private GameObject BossPrefab;
     [SerializeField] private float spawnRate = 1f;
     [SerializeField] private int waveAmount = 5;
     private int waveNumber = 1;
@@ -33,7 +34,9 @@ public class VirenSpawnBehaviour : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z+1);
         GameObject virus = Instantiate(VirenPrefab, spawnPos, Quaternion.identity);
+        GameObject boss = Instantiate(BossPrefab, spawnPos, Quaternion.identity);
         virus.GetComponent<VirenBehaviour>().setVirus(waveLives, waveDamage, waveSpeed);
+        //boss.GetComponent<VirenBehaviour>().setVirus(waveLives, waveDamage, waveSpeed);
     }
 
     //zuerst werden für eine gewisse zeit mit einer gewissen spawnrate viren gespawnt
