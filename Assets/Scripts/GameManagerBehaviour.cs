@@ -46,6 +46,14 @@ public class GameManagerBehaviour : MonoBehaviour
         FelderFree = new bool[32,18];
         blockUi();
         blockPath();
+        blockStartRAM();
+    }
+
+    void blockStartRAM()
+    {
+        FelderFree[15, 4] = false;
+        FelderFree[16, 4] = false;
+        FelderFree[17, 4] = false;
     }
 
     void blockUi()
