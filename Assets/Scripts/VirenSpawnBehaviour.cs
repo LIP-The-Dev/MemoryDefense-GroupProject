@@ -75,7 +75,7 @@ public class VirenSpawnBehaviour : MonoBehaviour
             StartCoroutine("WaveUI");
             waveAmount += 3;
             spawnRate *= 0.9f;
-            waveSpeed += waveSpeed*0.01f;
+            waveSpeed += waveSpeed*0.02f;
         }
     }
 
