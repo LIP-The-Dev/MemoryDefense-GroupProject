@@ -34,9 +34,14 @@ public class VirenSpawnBehaviour : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z+1);
         GameObject virus = Instantiate(VirenPrefab, spawnPos, Quaternion.identity);
-        GameObject boss = Instantiate(BossPrefab, spawnPos, Quaternion.identity);
         virus.GetComponent<VirenBehaviour>().setVirus(waveLives, waveDamage, waveSpeed);
-        //boss.GetComponent<VirenBehaviour>().setVirus(waveLives, waveDamage, waveSpeed);
+    }
+
+    public void spawnBoss()
+    {
+        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z+1);
+        GameObject boss = Instantiate(BossPrefab, spawnPos, Quaternion.identity);
+        boss.GetComponent<BossBehaviour>().setVirus(waveLives, waveDamage, waveSpeed);
     }
 
     //zuerst werden für eine gewisse zeit mit einer gewissen spawnrate viren gespawnt
@@ -54,9 +59,16 @@ public class VirenSpawnBehaviour : MonoBehaviour
             while (waveAmount > currentAmount)
             {
                 spawn();
+                
                 yield return new WaitForSeconds(spawnRate);
                 currentAmount = currentAmount + 1;
             }
+            
+            if (waveNumber % 3 == 0)
+            {
+                spawnBoss();
+            }
+            
             yield return new WaitForSeconds(10);
             waveNumber++;
             updateWave();
