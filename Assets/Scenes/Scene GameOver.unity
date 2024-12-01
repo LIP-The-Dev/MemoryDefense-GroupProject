@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 31220599}
   waitDuration: 8
-  retryScreen: {fileID: 0}
+  retryScreen: {fileID: 1921174676}
 --- !u!114 &1173138817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +482,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921174674}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -491,7 +491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -603.1356, y: 156.47382}
+  m_AnchoredPosition: {x: -603.1356, y: 156.47375}
   m_SizeDelta: {x: 555.7288, y: 397.0524}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1921174676

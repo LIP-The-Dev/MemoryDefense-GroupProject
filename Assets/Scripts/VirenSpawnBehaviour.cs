@@ -17,6 +17,7 @@ public class VirenSpawnBehaviour : MonoBehaviour
     private float waveSpeed = 3;
     public TMP_Text waveDisplay;
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,7 @@ public class VirenSpawnBehaviour : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z+1);
         GameObject virus = Instantiate(VirenPrefab, spawnPos, Quaternion.identity);
-        virus.GetComponent<VirenBehaviour>().setVirus(waveLives, waveDamage, waveSpeed);
+        virus.GetComponent<VirenBehaviour>().setVirus(waveLives, waveDamage, waveSpeed); 
     }
 
     public void spawnBoss()
@@ -76,18 +77,35 @@ public class VirenSpawnBehaviour : MonoBehaviour
             waveAmount += 3;
             spawnRate *= 0.9f;
             waveSpeed += waveSpeed*0.02f;
+            if (waveNumber % 1 == 0)
+            {
+                waveDamage++;
+            }
         }
     }
 
     public void updateWave()
     {
         String wave = "Wave " + waveNumber.ToString();
-        waveDisplay.text = wave;
+        if (waveNumber % 3 == 0)
+        {
+            String more = wave + "\n Boss!";
+            waveDisplay.text = more;
+            if (waveNumber % 6 == 0)
+            {
+                String themost = more + "\n Stärkere Gegner!";
+                waveDisplay.text = themost;
+            }
+        }
+        else
+        {
+            waveDisplay.text = wave;
+        }
     }
     public IEnumerator WaveUI()
     {
         waveDisplay.enabled = true;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         waveDisplay.enabled = false;
         
     }
