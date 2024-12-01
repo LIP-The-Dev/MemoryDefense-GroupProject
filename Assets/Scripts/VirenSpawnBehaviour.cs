@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -13,10 +14,13 @@ public class VirenSpawnBehaviour : MonoBehaviour
     private int waveDamage = 10;
     private int waveLives = 1;
     private float waveSpeed = 3;
+    public TMP_Text waveDisplay;
     
     // Start is called before the first frame update
     void Start()
     {
+        updateWave();
+        StartCoroutine("WaveUI");
         StartCoroutine("spawnWave");
     }
 
@@ -42,7 +46,8 @@ public class VirenSpawnBehaviour : MonoBehaviour
         while (true)
         {
             int currentAmount = 0;
-
+            yield return new WaitForSeconds(2);
+            
             while (waveAmount > currentAmount)
             {
                 spawn();
@@ -51,9 +56,24 @@ public class VirenSpawnBehaviour : MonoBehaviour
             }
             yield return new WaitForSeconds(10);
             waveNumber++;
+            updateWave();
+            StartCoroutine("WaveUI");
             waveAmount += 3;
             spawnRate *= 0.9f;
             waveSpeed += waveSpeed*0.01f;
         }
+    }
+
+    public void updateWave()
+    {
+        String wave = "Wave " +waveNumber.ToString();
+        waveDisplay.text = wave;
+    }
+    public IEnumerator WaveUI()
+    {
+        waveDisplay.enabled = true;
+        yield return new WaitForSeconds(2);
+        waveDisplay.enabled = false;
+        
     }
 }
