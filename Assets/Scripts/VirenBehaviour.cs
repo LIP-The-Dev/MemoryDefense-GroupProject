@@ -15,13 +15,13 @@ public class VirenBehaviour : MonoBehaviour
 
     private int EckPointsPassed = 0;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         pfadBehaviour = PfadBehaviour.GetInstance();
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
             Move();
     }
@@ -81,4 +81,30 @@ public class VirenBehaviour : MonoBehaviour
         speed = ispeed;
         damage = idamage;
     }
+    
+    public virtual float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+    
+    public virtual void ResetSpeed() { speed = 2; }
+    
+    
+    public virtual int Lives
+    {
+        get { return lives; }
+        set { lives = value; }
+    }
+    
+    public virtual void ResetLives() { lives = 1; }
+    
+    public virtual int Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
+    
+    public virtual void ResetDamage() { lives = 1; }
+
 }
