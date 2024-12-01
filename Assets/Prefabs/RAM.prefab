@@ -103,10 +103,10 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 0}
   Percent: 0.5
   UpgradeCost: 700
-  BaseSprite: {fileID: 0}
-  UpgradeOneSprite: {fileID: 0}
-  UpgradeTwoSprite: {fileID: 0}
-  UpgradeFinalSprite: {fileID: 0}
+  BaseSprite: {fileID: 21300000, guid: 8bbf8a55a2b84e5469a6363ad98f5709, type: 3}
+  UpgradeOneSprite: {fileID: 21300000, guid: 0775641459bd66e419334419c12c14a2, type: 3}
+  UpgradeTwoSprite: {fileID: 21300000, guid: f606061ff1fa4f94a93d4a3dda01bd35, type: 3}
+  UpgradeFinalSprite: {fileID: 21300000, guid: 85a1d1eb24f608745894a35705c95d73, type: 3}
 --- !u!61 &6647365469639042883
 BoxCollider2D:
   m_ObjectHideFlags: 0

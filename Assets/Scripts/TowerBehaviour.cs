@@ -24,6 +24,8 @@ public abstract class TowerBehaviour : MonoBehaviour
     protected Sprite CurrentSprite;
 
     protected bool IsSet = false;
+
+    protected bool MaxForm = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public abstract class TowerBehaviour : MonoBehaviour
     }
     
 
-    public virtual void upgrade()
+    public void upgrade()
     {
         if (GameManagerBehaviour.GetInstance().buayble(UpgradeCost * (UpgradeIndex+1)))
         {
@@ -51,7 +53,7 @@ public abstract class TowerBehaviour : MonoBehaviour
     {
     }
 
-    protected virtual void setSprite()
+    protected void setSprite()
     {
         switch (UpgradeIndex)
         {
@@ -76,20 +78,23 @@ public abstract class TowerBehaviour : MonoBehaviour
                 break;
             }
         }
+        
+        GetComponent<SpriteRenderer>().sprite = CurrentSprite;
     }
 
-    protected virtual void setAttackCooldown(float value)
+    protected void setAttackCooldown(float value)
     {
         AttackCooldown = value;
     }
     
-    protected virtual void setAttackDamage(int value)
+    protected void setAttackDamage(int value)
     {
         AttackDamage = value;
     }
     
-    protected virtual void finalUpgrade()
+    protected void finalUpgrade()
     {
+        MaxForm = true;
     }
 
     public virtual void Shoot()
@@ -119,5 +124,4 @@ public abstract class TowerBehaviour : MonoBehaviour
     {
         return UpgradeCost * (UpgradeIndex + 1);
     }
-    
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RAMBehaviour : TowerBehaviour
 {
-    private static int Cost = 80;
+    private static int Cost = 120;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,10 @@ public class RAMBehaviour : TowerBehaviour
 
     public override void Shoot()
     {
+        if (MaxForm)
+        {
+            GameManagerBehaviour.GetInstance().addLives(1);
+        }
         GameManagerBehaviour.GetInstance().updateCurrency(AttackDamage);
         Invoke("Shoot", AttackCooldown);
     }

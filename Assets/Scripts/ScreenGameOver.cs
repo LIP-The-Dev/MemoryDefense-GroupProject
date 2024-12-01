@@ -11,6 +11,7 @@ public class ImageTransparencyController : MonoBehaviour
     //public float duration = 0.5f;
     private float targetAlpha = 1.0f;
     public TMP_Text retryScreen;
+    
 
     void Start()
     {
@@ -35,12 +36,14 @@ public class ImageTransparencyController : MonoBehaviour
             color.a = Mathf.Lerp(color.a, targetAlpha, elapsedTime / waitDuration);
             img.color = color;
             retryScreen.color = text;
+            text.a = Mathf.Lerp(text.a, targetAlpha, elapsedTime / waitDuration);
             yield return null; 
         }
 
         
         color.a = targetAlpha;
         img.color = color;
+        text.a = targetAlpha;
         retryScreen.color = text;
     }
 

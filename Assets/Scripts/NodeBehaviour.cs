@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NodeBehaviour : TowerBehaviour
 {
-    private static int Cost = 40;
+    private static int Cost = 60;
     [SerializeField] private Vector3 ShootingDirection;
     // Start is called before the first frame update
     void Start()
@@ -59,6 +59,10 @@ public class NodeBehaviour : TowerBehaviour
     public override void Shoot()
     {
         Vector3 projSpawn = new Vector3(transform.position.x,transform.position.y,transform.position.z+1);
+        if (MaxForm)
+        {
+            GameObject proj2 = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
+        }
         GameObject proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
         proj.GetComponent<ProjectileBehaviour>().setShootingDirection(ShootingDirection);
         Invoke("Shoot", AttackCooldown);

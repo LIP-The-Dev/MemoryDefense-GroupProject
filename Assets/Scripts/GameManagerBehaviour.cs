@@ -163,6 +163,12 @@ public class GameManagerBehaviour : MonoBehaviour
         updateStats();
     }
 
+    public void addLives(int value)
+    {
+        if (Lives + value <= 100) Lives += value;
+        updateStats();
+    }
+
     public void updateCurrency(int value)
     {
         Currency += value;
