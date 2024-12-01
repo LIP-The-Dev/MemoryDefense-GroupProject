@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManagerBehaviour : MonoBehaviour
 {
     private int Lives = 100;
-    private int Currency;
+    [SerializeField] int Currency = 100;
     private float TimeInGame;
     private int Level;
     private int Score;
@@ -173,6 +173,16 @@ public class GameManagerBehaviour : MonoBehaviour
     {
         if (Currency + value >= 0) return true;
         else return false;
+    }
+
+    public bool canAfford(int Cost)
+    {
+        return Currency >= Cost;
+    }
+
+    public void subCurrency(int Cost)
+    {
+        Currency -= Cost;
     }
 
     public void addToScore(int value)

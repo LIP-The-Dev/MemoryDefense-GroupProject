@@ -5,10 +5,10 @@ using UnityEngine;
 public class NodeBehaviour : TowerBehaviour
 {
     [SerializeField] private Vector3 ShootingDirection;
-    [SerializeField] private float AttackCooldown = 2f;
-     private int Cost = -100;
+     private float AttackCooldown = 2f;
+     private static int Cost = -50;
      private int UpgradeCost = -200;
-    [SerializeField] private int AttackDamage = 1;
+     private int AttackDamage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,10 @@ public class NodeBehaviour : TowerBehaviour
     {
 
     }*/
-
+    public static int getCost()
+    {
+        return Cost;
+    }
     public void UpdateShootingDirection()
     {
         // Normalisiere den Winkel auf den Bereich [0, 360)

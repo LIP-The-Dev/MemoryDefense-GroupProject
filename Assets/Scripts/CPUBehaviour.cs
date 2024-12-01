@@ -10,8 +10,8 @@ public class CPUBehaviour : TowerBehaviour
     [SerializeField] private float AttackCooldown;
     [SerializeField] private int AttackDamage;
 
-    [SerializeField] private int Cost = -200;
-    [SerializeField] private int UpgradeCost = -350;
+    private static int Cost;
+    private int UpgradeCost;
 
     [SerializeField] private Vector3 direction;
     
@@ -74,5 +74,10 @@ public class CPUBehaviour : TowerBehaviour
                 break;
             }
         }
+    }
+
+    public static int getCost()
+    {
+        return Cost;
     }
 }

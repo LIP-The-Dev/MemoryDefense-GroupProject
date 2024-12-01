@@ -22,6 +22,7 @@ public class ShopBehaviour : MonoBehaviour
     private GameObject currentTower;
     
     private bool isPlacingTower = false;
+    private GameManagerBehaviour gameManager;
     
 
     
@@ -30,9 +31,11 @@ public class ShopBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
+        
         ButtonRAM.onClick.AddListener(OnButtonRAMClick);
         ButtonCPU.onClick.AddListener(OnButtonCPUClick);
         ButtonNode.onClick.AddListener(OnButtonNodeClick);
+        this.gameManager = GameManagerBehaviour.GetInstance();
     }
 
     // Update is called once per frame
@@ -160,20 +163,22 @@ public class ShopBehaviour : MonoBehaviour
     
     void OnButtonRAMClick()
     {
-        if (!isPlacingTower)
+        if (gameManager.buayble(RAMBehaviour.getCost())&&!isPlacingTower)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
-            currentTower = Instantiate(RAMPrefab, mousePosition, Quaternion.identity);
-            currentTower.GetComponent<TowerBehaviour>().enabled = false;
-            isPlacingTower = true;
+                gameManager.updateCurrency(RAMBehaviour.getCost());
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
+                currentTower = Instantiate(RAMPrefab, mousePosition, Quaternion.identity);
+                currentTower.GetComponent<TowerBehaviour>().enabled = false;
+                isPlacingTower = true;
         }
     }
     
     void OnButtonCPUClick()
     {
-        if (!isPlacingTower)
+        if (gameManager.buayble(CPUBehaviour.getCost())&&!isPlacingTower)
         {
+            gameManager.updateCurrency(CPUBehaviour.getCost());
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
             currentTower = Instantiate(CPUPrefab, mousePosition, Quaternion.identity);
@@ -184,8 +189,9 @@ public class ShopBehaviour : MonoBehaviour
     
     void OnButtonNodeClick()
     {
-        if (!isPlacingTower)
+        if (gameManager.buayble(NodeBehaviour.getCost())&&!isPlacingTower)
         {
+            gameManager.updateCurrency(NodeBehaviour.getCost());
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Setze die Z-Position auf 0 für 2D
             currentTower = Instantiate(NodePrefab, mousePosition, Quaternion.identity);

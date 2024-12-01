@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class RAMBehaviour : TowerBehaviour
 {
-    [SerializeField] private int Cost;
-    [SerializeField] private int UpgradeCost;
-    [SerializeField] private float AttackCooldown = 5f;
-    [SerializeField] private int AttackDamage = 2;
+    private static int Cost= -80;
+    private int UpgradeCost;
+    private float AttackCooldown = 5f;
+    private int AttackDamage = 20;
     // Start is called before the first frame update
     void Start()
     {
         Shoot();
+    }
+
+    public static int getCost()
+    {
+        return Cost;
     }
 
     // Update is called once per frame

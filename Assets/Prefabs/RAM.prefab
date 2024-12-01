@@ -98,21 +98,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed59befd88367c842afdae1b797ea819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackCooldown: 0
-  AttackDamage: 0
+  AttackCooldown: 5
+  AttackDamage: 45
   ProjectilePrefab: {fileID: 0}
   MaxRange: 0
-  Cost: 0
+  Cost: -80
   Percent: 0.45
-  UpgradeCost: 0
+  UpgradeCost: -150
   BaseSprite: {fileID: 0}
   UpgradeOneSprite: {fileID: 0}
   UpgradeTwoSprite: {fileID: 0}
   UpgradeFinalSprite: {fileID: 0}
-  Cost: 0
-  UpgradeCost: 0
-  AttackCooldown: 5
-  AttackDamage: 2
 --- !u!61 &6647365469639042883
 BoxCollider2D:
   m_ObjectHideFlags: 0
