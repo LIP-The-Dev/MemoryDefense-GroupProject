@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using TMPro;
 
 public class ImageTransparencyController : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class ImageTransparencyController : MonoBehaviour
     public float waitDuration = 8.0f;
     //public float duration = 0.5f;
     private float targetAlpha = 1.0f;
+    public TMP_Text retryScreen;
 
     void Start()
     {
+        retryScreen.text = "U died! \n Tap any Button to restart!";
         if (img == null)
         {
             img = GetComponent<Image>();
@@ -41,6 +44,7 @@ public class ImageTransparencyController : MonoBehaviour
 
     public void ChangeTransparency(float alpha)
     {
+        retryScreen.enabled = true;
         targetAlpha = Mathf.Clamp01(alpha);
         StartCoroutine(DelayedStart());
     }

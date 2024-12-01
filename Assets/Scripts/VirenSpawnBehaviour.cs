@@ -81,7 +81,7 @@ public class VirenSpawnBehaviour : MonoBehaviour
 
     public void updateWave()
     {
-        String wave = "Wave " +waveNumber.ToString();
+        String wave = "Wave " + waveNumber.ToString();
         waveDisplay.text = wave;
     }
     public IEnumerator WaveUI()
