@@ -20,6 +20,8 @@ public class ShopBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject NodePrefab;
 
+    [SerializeField] private AudioSource audioSource;
+
     private GameObject currentTower;
     
     private bool isPlacingTower = false;
@@ -39,6 +41,7 @@ public class ShopBehaviour : MonoBehaviour
         RAMCosts.text = RAMBehaviour.getCost().ToString();
         NodeCosts.text = NodeBehaviour.getCost().ToString();
         CPUCosts.text = CPUBehaviour.getCost().ToString();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -90,6 +93,7 @@ public class ShopBehaviour : MonoBehaviour
             {
                 GameManagerBehaviour.GetInstance().setFree(x,y,false);
                 isPlacingTower = false;
+                PlayAudio();
                 SnapToGrid(x,y);
                 currentTower.GetComponent<TowerBehaviour>().enabled = true;
                 currentTower.GetComponent<TowerBehaviour>().setFix();
@@ -111,6 +115,7 @@ public class ShopBehaviour : MonoBehaviour
                     GameManagerBehaviour.GetInstance().setFree(x-1,y,false);
 
                     isPlacingTower = false;
+                    PlayAudio();
                     SnapToGridCPU();
                     currentTower.GetComponent<TowerBehaviour>().enabled = true;
                     currentTower.GetComponent<TowerBehaviour>().setFix();
@@ -131,6 +136,7 @@ public class ShopBehaviour : MonoBehaviour
                         GameManagerBehaviour.GetInstance().setFree(x+1,y,false);
 
                         isPlacingTower = false;
+                        PlayAudio();
                         SnapToGrid(x,y);
                         currentTower.GetComponent<TowerBehaviour>().enabled = true;
                         currentTower.GetComponent<TowerBehaviour>().setFix();
@@ -199,6 +205,14 @@ public class ShopBehaviour : MonoBehaviour
             currentTower = Instantiate(NodePrefab, mousePosition, Quaternion.identity);
             currentTower.GetComponent<TowerBehaviour>().enabled = false;
             isPlacingTower = true;
+        }
+    }
+    
+    public void PlayAudio()
+    {
+        if (audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 }

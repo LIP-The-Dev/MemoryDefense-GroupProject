@@ -61,7 +61,13 @@ public class NodeBehaviour : TowerBehaviour
         Vector3 projSpawn = new Vector3(transform.position.x,transform.position.y,transform.position.z+1);
         if (MaxForm)
         {
+            Vector3 difdir = new Vector3(0,0,0);
+            if(ShootingDirection == Vector3.down) difdir = Vector2.up;
+            else if(ShootingDirection == Vector3.up) difdir = Vector2.down;
+            else if(ShootingDirection == Vector3.left) difdir = Vector2.right;
+            else if(ShootingDirection == Vector3.right) difdir = Vector2.left;
             GameObject proj2 = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
+            proj2.GetComponent<ProjectileBehaviour>().setShootingDirection(difdir);
         }
         GameObject proj = Instantiate(ProjectilePrefab, projSpawn, Quaternion.identity);
         proj.GetComponent<ProjectileBehaviour>().setShootingDirection(ShootingDirection);
