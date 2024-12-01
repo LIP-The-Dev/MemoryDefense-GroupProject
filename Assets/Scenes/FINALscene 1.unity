@@ -1306,7 +1306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VirenPrefab: {fileID: 8051761355476575239, guid: 21278792eb08a63499e1fbcbf6bc48dc, type: 3}
-  spawnSpeed: 1
+  spawnRate: 1
+  waveTime: 5
 --- !u!4 &1804500062
 Transform:
   m_ObjectHideFlags: 0
@@ -1753,7 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d71f930246767149b51ed8cb99aa8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Currency: 0
+  Currency: 100
   Netzteil: {fileID: 113282419}
   Shop: {fileID: 1613979909}
   Pfad: {fileID: 1896694098}
