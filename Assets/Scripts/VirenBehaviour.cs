@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VirenBehaviour : MonoBehaviour
 {
-    [SerializeField] private float speed=1;
+    [SerializeField] private float speed=2;
 
     [SerializeField] private int Lives=1;
 
