@@ -8,9 +8,6 @@ public class BossBehaviour : VirenBehaviour
     {
         base.Start();
         
-        this.Speed = 3;
-        this.Lives = 5;
-        this.Damage = 20;
     }
 
     void Update()
