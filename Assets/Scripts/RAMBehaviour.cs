@@ -24,6 +24,10 @@ public class RAMBehaviour : TowerBehaviour
 
     public override void Shoot()
     {
+        if (MaxForm)
+        {
+            GameManagerBehaviour.GetInstance().addLives(1);
+        }
         GameManagerBehaviour.GetInstance().updateCurrency(AttackDamage);
         Invoke("Shoot", AttackCooldown);
     }

@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d71f930246767149b51ed8cb99aa8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Currency: 100
+  Currency: 10000
   Netzteil: {fileID: 113282419}
   Shop: {fileID: 1613979909}
   Pfad: {fileID: 1896694098}
