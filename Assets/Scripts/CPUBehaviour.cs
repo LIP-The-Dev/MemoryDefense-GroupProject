@@ -77,7 +77,7 @@ public class CPUBehaviour : TowerBehaviour
     public override void Sell()
     {
         Destroy(gameObject);
-        int newCost = (int) (-Cost * Percent);
+        int newCost = (int) (Cost * Percent);
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);
     }
     

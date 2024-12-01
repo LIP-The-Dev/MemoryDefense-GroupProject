@@ -103,6 +103,7 @@ public abstract class TowerBehaviour : MonoBehaviour
 
     public virtual void Sell()
     {
+        
     }
 
     public int getUpgradeIndex()

@@ -39,6 +39,20 @@ public class UpgradeBehaviour : MonoBehaviour
             }
             else hideUpgradeButton();
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Default"));
+
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.CompareTag("Node") || hit.collider.gameObject.CompareTag("CPU") || hit.collider.gameObject.CompareTag("RAM"))
+                {
+                    hit.collider.gameObject.GetComponent<TowerBehaviour>().Sell();
+                }
+            }
+        }
     }
 
     void showUpgradeButton()
