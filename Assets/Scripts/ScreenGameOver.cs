@@ -14,7 +14,6 @@ public class ImageTransparencyController : MonoBehaviour
 
     void Start()
     {
-        retryScreen.text = "U died! \n Tap any Button to restart!";
         if (img == null)
         {
             img = GetComponent<Image>();
@@ -28,23 +27,25 @@ public class ImageTransparencyController : MonoBehaviour
         
         float elapsedTime = 0.0f;
         Color color = img.color;
+        Color text = retryScreen.color;
 
         while (elapsedTime < waitDuration)
         {
             elapsedTime += Time.deltaTime/18;
             color.a = Mathf.Lerp(color.a, targetAlpha, elapsedTime / waitDuration);
             img.color = color;
+            retryScreen.color = text;
             yield return null; 
         }
 
         
         color.a = targetAlpha;
         img.color = color;
+        retryScreen.color = text;
     }
 
     public void ChangeTransparency(float alpha)
     {
-        retryScreen.enabled = true;
         targetAlpha = Mathf.Clamp01(alpha);
         StartCoroutine(DelayedStart());
     }
