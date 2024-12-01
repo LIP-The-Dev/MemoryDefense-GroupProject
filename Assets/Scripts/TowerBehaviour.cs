@@ -38,9 +38,9 @@ public abstract class TowerBehaviour : MonoBehaviour
 
     public virtual void upgrade()
     {
-        if (GameManagerBehaviour.GetInstance().buayble(UpgradeCost))
+        if (GameManagerBehaviour.GetInstance().buayble(UpgradeCost * (UpgradeIndex+1)))
         {
-            GameManagerBehaviour.GetInstance().updateCurrency(UpgradeCost);
+            GameManagerBehaviour.GetInstance().subCurrency(UpgradeCost* (UpgradeIndex+1));
             UpgradeIndex++;
             setSprite();
             setUpgrade();
@@ -113,6 +113,11 @@ public abstract class TowerBehaviour : MonoBehaviour
     public bool getFix()
     {
         return IsSet;
+    }
+
+    public int getUpgradeCost()
+    {
+        return UpgradeCost * (UpgradeIndex + 1);
     }
     
 }

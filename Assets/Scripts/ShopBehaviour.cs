@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShopBehaviour : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class ShopBehaviour : MonoBehaviour
     private GameObject currentTower;
     
     private bool isPlacingTower = false;
+
+    [SerializeField] private TMP_Text RAMCosts;
+    [SerializeField] private TMP_Text NodeCosts;
+    [SerializeField] private TMP_Text CPUCosts;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,9 @@ public class ShopBehaviour : MonoBehaviour
         ButtonRAM.onClick.AddListener(OnButtonRAMClick);
         ButtonCPU.onClick.AddListener(OnButtonCPUClick);
         ButtonNode.onClick.AddListener(OnButtonNodeClick);
+        RAMCosts.text = RAMBehaviour.getCost().ToString();
+        NodeCosts.text = NodeBehaviour.getCost().ToString();
+        CPUCosts.text = CPUBehaviour.getCost().ToString();
     }
 
     // Update is called once per frame
