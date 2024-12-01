@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class VirenSpawnBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject VirenPrefab;
     [SerializeField] private float spawnRate = 1f;
-    [SerializeField] private int waveTime = 5;
-    private int amountOfWaves = 1;
-    private float pauseTime = 10f;
+    [SerializeField] private int waveAmount = 5;
+    private int waveNumber = 1;
+    private int waveDamage = 10;
+    private int waveLives = 1;
+    private float waveSpeed = 3;
     
     // Start is called before the first frame update
     void Start()
@@ -24,7 +28,8 @@ public class VirenSpawnBehaviour : MonoBehaviour
     public void spawn()
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z+1);
-        Instantiate(VirenPrefab, spawnPos, Quaternion.identity);
+        GameObject virus = Instantiate(VirenPrefab, spawnPos, Quaternion.identity);
+        virus.GetComponent<VirenBehaviour>().setVirus(waveLives, waveDamage, waveSpeed);
     }
 
     //zuerst werden für eine gewisse zeit mit einer gewissen spawnrate viren gespawnt
@@ -36,18 +41,19 @@ public class VirenSpawnBehaviour : MonoBehaviour
     {
         while (true)
         {
-            float currentTime = 0.0f;
+            int currentAmount = 0;
 
-            while (waveTime > currentTime)
+            while (waveAmount > currentAmount)
             {
                 spawn();
                 yield return new WaitForSeconds(spawnRate);
-                currentTime = currentTime+ spawnRate;
+                currentAmount = currentAmount + 1;
             }
             yield return new WaitForSeconds(10);
-            amountOfWaves++;
-            waveTime = amountOfWaves * 2;
-            spawnRate -= 0.01f;
+            waveNumber++;
+            waveAmount += 3;
+            spawnRate *= 0.9f;
+            waveSpeed += waveSpeed*0.01f;
         }
     }
 }

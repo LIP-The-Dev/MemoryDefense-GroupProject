@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class VirenBehaviour : MonoBehaviour
 {
-    [SerializeField] private float speed=2;
+    [SerializeField] private float speed;
 
-    [SerializeField] private int Lives=1;
+    [SerializeField] private int lives;
 
-    [SerializeField] private int Damage=1;
+    [SerializeField] private int damage;
     private Vector2 direction = new Vector2(1, 0);
     private PfadBehaviour pfadBehaviour;
     [SerializeField] private int grantsScoreOf = 1;
@@ -62,16 +62,23 @@ public class VirenBehaviour : MonoBehaviour
 
     public int getDamage()
     {
-        return Damage;
+        return damage;
     }
 
     public void looseLife(int damage)
     {
-        Lives -= damage;
-        if (Lives <= 0)
+        lives -= damage;
+        if (lives <= 0)
         {
             Destroy(this.gameObject);
             GameManagerBehaviour.GetInstance().addToScore(grantsScoreOf);
         }
+    }
+
+    public void setVirus(int ilives, int idamage, float ispeed)
+    {
+        lives = ilives;
+        speed = ispeed;
+        damage = idamage;
     }
 }
