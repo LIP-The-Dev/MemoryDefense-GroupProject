@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class NodeBehaviour : TowerBehaviour
 {
@@ -76,6 +77,7 @@ public class NodeBehaviour : TowerBehaviour
     
     public override void Sell()
     {
+        GameManagerBehaviour.GetInstance().setFree((int) Math.Floor(transform.position.x), (int) Math.Floor(transform.position.y), true);
         Destroy(gameObject);
         int newCost = (int) (Cost * Percent);
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);

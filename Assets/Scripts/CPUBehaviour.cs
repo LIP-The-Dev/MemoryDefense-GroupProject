@@ -76,6 +76,12 @@ public class CPUBehaviour : TowerBehaviour
 
     public override void Sell()
     {
+        int x = (int)Math.Round(transform.position.x);
+        int y = (int)Math.Round(transform.position.y);
+        GameManagerBehaviour.GetInstance().setFree(x,y, true);
+        GameManagerBehaviour.GetInstance().setFree(x - 1,y, true);
+        GameManagerBehaviour.GetInstance().setFree(x -1,y - 1, true);
+        GameManagerBehaviour.GetInstance().setFree(x,y - 1, true);
         Destroy(gameObject);
         int newCost = (int) (Cost * Percent);
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);

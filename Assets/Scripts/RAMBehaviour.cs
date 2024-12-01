@@ -34,6 +34,11 @@ public class RAMBehaviour : TowerBehaviour
     
     public override void Sell()
     {
+        int x = (int)Math.Floor(transform.position.x);
+        int y = (int)Math.Floor(transform.position.y);
+        GameManagerBehaviour.GetInstance().setFree(x,y, true);
+        GameManagerBehaviour.GetInstance().setFree(x - 1,y, true);
+        GameManagerBehaviour.GetInstance().setFree(x + 1,y, true);
         Destroy(gameObject);
         int newCost = (int) (Cost * Percent);
         GameManagerBehaviour.GetInstance().updateCurrency(newCost);
