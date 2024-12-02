@@ -24,7 +24,7 @@ public class ShopBehaviour : MonoBehaviour
 
     private GameObject currentTower;
     
-    private bool isPlacingTower = false;
+    private static bool isPlacingTower = false;
 
     [SerializeField] private TMP_Text RAMCosts;
     [SerializeField] private TMP_Text NodeCosts;
@@ -214,5 +214,10 @@ public class ShopBehaviour : MonoBehaviour
         {
             audioSource.Play();
         }
+    }
+
+    public static bool getIsPlacingTower()
+    {
+        return isPlacingTower;
     }
 }
